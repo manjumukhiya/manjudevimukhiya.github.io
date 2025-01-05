@@ -1,154 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3818077868471486"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manju Devi Mukhiya</title>
+    <title><center><strong>MANJU BLOGS</strong></center></title>
     <style>
-        /* Global Styles */
+        /* General styles */
         body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            padding: 0;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
             color: #333;
-            background: linear-gradient(to bottom, #1e90ff, #87cefa);
-            background-attachment: fixed;
         }
 
         header {
-            background: linear-gradient(to right, #007bff, #00bfff);
-            color: white;
-            padding: 15px 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            margin: 0;
+            padding: 2rem 1rem;
+            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            color: white;
+            font-size: 2.5rem;
         }
 
         nav {
-            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            background: #f8c291;
+            padding: 1rem;
         }
 
         nav a {
-            background: #0056b3;
-            color: white;
             text-decoration: none;
-            margin: 0 10px;
-            padding: 10px 20px;
-            border-radius: 5px;
+            color: white;
+            margin: 0 1rem;
             font-weight: bold;
-            transition: background 0.3s ease;
         }
 
         nav a:hover {
-            background: #003d80;
+            text-decoration: underline;
         }
 
-        section {
-            padding: 20px;
+        .blog-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
             background: white;
-            margin: 20px auto;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
 
-        .about h2, .skills h2, .contact h2 {
-            color: #0056b3;
-            margin-bottom: 10px;
+        .blog-card:hover {
+            transform: translateY(-10px);
         }
 
-        .about p, .contact p {
-            font-size: 1.1em;
-            color: #444;
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
 
-        .skills ul {
-            list-style: none;
-            padding: 0;
+        .blog-card-content {
+            padding: 1rem;
         }
 
-        .skills li {
-            background: linear-gradient(to right, #0056b3, #00bfff);
+        .blog-card-title {
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #333;
+        }
+
+        .blog-card-text {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card a {
+            text-decoration: none;
             color: white;
-            padding: 10px;
-            margin: 5px 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            padding: 0.5rem 1rem;
             border-radius: 5px;
             font-weight: bold;
         }
 
-        button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 1em;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        button:hover {
-            background: #0056b3;
+        .blog-card a:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
         }
 
         footer {
             text-align: center;
-            background: linear-gradient(to right, #0056b3, #00bfff);
+            padding: 1rem;
+            background: #6a11cb;
             color: white;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-
-        footer p {
-            margin: 0;
+            margin-top: 2rem;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>Welcome to Manju Devi Mukhiya's Website</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        Modern Blogging Website
     </header>
 
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>
-            Hello! I am Manju Devi Mukhiya, a passionate individual with a love for learning and sharing knowledge.
-            Welcome to my personal space where I showcase my work, skills, and interests.
-        </p>
-        <button onclick="alert('Thank you for visiting!')">Learn More</button>
-    </section>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#blogs">Blogs</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-    <section id="skills" class="skills">
-        <h2>My Skills</h2>
-        <ul>
-            <li>Leadership and Management</li>
-            <li>Community Development</li>
-            <li>Public Speaking</li>
-            <li>Teamwork and Collaboration</li>
-        </ul>
-    </section>
+    <section id="blogs" class="blog-container">
+        <!-- Blog 1 -->
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">The Future of AI in 2025</h3>
+                <p class="blog-card-text">Explore how artificial intelligence is shaping industries worldwide.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
 
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>
-            I'd love to hear from you! You can reach me at: 
-            <a href="mailto:manjudevi@example.com">manjudevi@example.com</a>
-        </p>
-        <button onclick="window.location.href='mailto:manjudevi@example.com'">Email Me</button>
+        <!-- Blog 2 -->
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">Top 10 Travel Destinations</h3>
+                <p class="blog-card-text">Discover the most breathtaking places to visit this year.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <!-- Blog 3 -->
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">Mastering Remote Work</h3>
+                <p class="blog-card-text">Tips and tools for thriving in a remote work environment.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <!-- Add more blogs -->
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">Healthy Eating Habits</h3>
+                <p class="blog-card-text">Simple ways to improve your diet and boost energy levels.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">Cryptocurrency Trends</h3>
+                <p class="blog-card-text">What's next for Bitcoin, Ethereum, and other digital currencies?</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">Minimalist Lifestyle</h3>
+                <p class="blog-card-text">Why less is more in today’s fast-paced world.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">Fitness Hacks for Busy People</h3>
+                <p class="blog-card-text">Stay fit and active even with a packed schedule.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">The Rise of Electric Cars</h3>
+                <p class="blog-card-text">How electric vehicles are transforming transportation.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">Mental Health Awareness</h3>
+                <p class="blog-card-text">Breaking the stigma and promoting well-being.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
+            <div class="blog-card-content">
+                <h3 class="blog-card-title">The Future of Work</h3>
+                <p class="blog-card-text">Adapting to automation and hybrid workspaces.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
     </section>
 
     <footer>
-        <p>© 2025 Manju Devi Mukhiya. All rights reserved.</p>
+        ©MANJUBLOGS. All Rights Reserved.
     </footer>
 </body>
+
 </html>
