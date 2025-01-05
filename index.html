@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANJU BLOGS</title>
+    <title>Modern Blogging Website</title>
     <style>
         /* General styles */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fff9e5;
@@ -18,22 +20,23 @@
         header {
             text-align: center;
             padding: 2rem 1rem;
-            background: #fbc2eb;
-            color: white;
+            background: linear-gradient(to right, #002f4b, #003f5c);
+            color: #fff9e5;
             font-size: 2.5rem;
-            font-family: 'Cursive', serif;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px black;
         }
 
         nav {
             display: flex;
             justify-content: center;
-            background: #f8c291;
+            background: #3b6978;
             padding: 1rem;
         }
 
         nav a {
             text-decoration: none;
-            color: white;
+            color: #fff9e5;
             margin: 0 1rem;
             font-weight: bold;
         }
@@ -76,12 +79,14 @@
         .blog-card-title {
             font-size: 1.5rem;
             margin: 0.5rem 0;
-            color: #333;
+            color: #003f5c;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px black;
         }
 
         .blog-card-text {
             font-size: 1rem;
-            color: #666;
+            color: #333;
             margin-bottom: 1rem;
             text-align: justify;
         }
@@ -99,20 +104,70 @@
             background: linear-gradient(to right, #2575fc, #6a11cb);
         }
 
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            z-index: 1000;
+            display: none;
+        }
+
+        .modal h3 {
+            margin-top: 0;
+        }
+
+        .modal p {
+            text-align: justify;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .modal-close {
+            display: block;
+            margin-top: 1rem;
+            text-align: center;
+            text-decoration: none;
+            background: #003f5c;
+            color: #fff9e5;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .modal-close:hover {
+            background: #6a11cb;
+        }
+
         footer {
             text-align: center;
             padding: 1rem;
-            background: #6a11cb;
-            color: white;
+            background: #003f5c;
+            color: #fff9e5;
             margin-top: 2rem;
         }
     </style>
 </head>
 
 <body>
-    <header><center><strong>
-        MANJU BLOGS
-    </header></strong></center>
+    <header>
+        Modern Blogging Website
+    </header>
 
     <nav>
         <a href="#">Home</a>
@@ -127,67 +182,56 @@
             <img src="https://via.placeholder.com/300x200" alt="Blog Image">
             <div class="blog-card-content">
                 <h3 class="blog-card-title">The Future of AI in 2025</h3>
-                <p class="blog-card-text">
-                    Artificial intelligence continues to evolve and transform industries, driving automation, improving decision-making, and enhancing user experiences. 
-                    As we move forward, AI is expected to play a significant role in healthcare, education, and smart city development. From personal assistants to 
-                    predictive analytics, AI solutions are becoming more intuitive and accessible. However, the rise of AI also raises ethical concerns, including job displacement 
-                    and data privacy issues. As we embrace this technology, balancing innovation with regulation is key to ensuring a positive impact on society.
-                </p>
-                <a href="#">Read More</a>
+                <p class="blog-card-text">Artificial intelligence continues to evolve...</p>
+                <a href="#" class="read-more" data-full-article="Artificial intelligence continues to evolve and transform industries, driving automation, improving decision-making, and enhancing user experiences. As we move forward, AI is expected to play a significant role in healthcare, education, and smart city development. From personal assistants to predictive analytics, AI solutions are becoming more intuitive and accessible. However, the rise of AI also raises ethical concerns, including job displacement and data privacy issues. As we embrace this technology, balancing innovation with regulation is key to ensuring a positive impact on society.">Read More</a>
             </div>
         </div>
 
-        <!-- Blog 2 -->
-        <div class="blog-card">
-            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
-            <div class="blog-card-content">
-                <h3 class="blog-card-title">Top 10 Travel Destinations</h3>
-                <p class="blog-card-text">
-                    Traveling offers an escape from the mundane and an opportunity to explore new cultures and landscapes. This year’s top travel destinations 
-                    include the pristine beaches of Bali, the historical sites of Rome, and the bustling streets of Tokyo. For adventure seekers, the rugged mountains 
-                    of Patagonia and the vibrant coral reefs of the Maldives promise unforgettable experiences. Each destination offers a unique blend of natural beauty, 
-                    culinary delights, and cultural treasures. Whether you prefer relaxing by the sea or embarking on thrilling escapades, there’s a place for everyone.
-                </p>
-                <a href="#">Read More</a>
-            </div>
-        </div>
-
-        <!-- Blog 3 -->
-        <div class="blog-card">
-            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
-            <div class="blog-card-content">
-                <h3 class="blog-card-title">Mastering Remote Work</h3>
-                <p class="blog-card-text">
-                    Remote work has revolutionized how we approach our professional lives. With flexibility and autonomy, it allows us to balance our work and personal commitments more effectively. 
-                    However, mastering remote work requires discipline and the right tools. Setting up a dedicated workspace, following a structured schedule, and leveraging communication platforms 
-                    like Slack or Zoom can make a significant difference. Employers are also embracing hybrid models to cater to diverse preferences. While remote work provides convenience, 
-                    maintaining boundaries between work and home life is crucial for productivity and mental well-being.
-                </p>
-                <a href="#">Read More</a>
-            </div>
-        </div>
-
-        <!-- Blog 4 -->
-        <div class="blog-card">
-            <img src="https://via.placeholder.com/300x200" alt="Blog Image">
-            <div class="blog-card-content">
-                <h3 class="blog-card-title">Healthy Eating Habits</h3>
-                <p class="blog-card-text">
-                    A balanced diet is the cornerstone of a healthy lifestyle. Incorporating whole grains, fresh fruits, vegetables, and lean proteins into your meals can provide essential nutrients and energy. 
-                    Staying hydrated and limiting processed foods also play a significant role. Planning your meals ahead of time can prevent impulsive eating and promote better choices. Healthy eating 
-                    isn’t about strict limitations; it’s about finding what works for your body and enjoying a variety of foods in moderation. Remember, consistency is key to long-term success.
-                </p>
-                <a href="#">Read More</a>
-            </div>
-        </div>
-
-        <!-- Continue similar blocks for remaining blogs -->
-        <!-- Blog 5-10 -->
+        <!-- Repeat similar structure for other blogs -->
     </section>
+
+    <!-- Modal -->
+    <div class="overlay"></div>
+    <div class="modal">
+        <h3 id="modal-title">Title</h3>
+        <p id="modal-content">Full article content goes here...</p>
+        <a href="#" class="modal-close">Close</a>
+    </div>
 
     <footer>
         © 2025 Blogging Website. All Rights Reserved.
     </footer>
+
+    <script>
+        // JavaScript for modal functionality
+        const readMoreLinks = document.querySelectorAll('.read-more');
+        const modal = document.querySelector('.modal');
+        const overlay = document.querySelector('.overlay');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+        const modalClose = document.querySelector('.modal-close');
+
+        readMoreLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                modalTitle.textContent = link.previousElementSibling.previousElementSibling.textContent;
+                modalContent.textContent = link.getAttribute('data-full-article');
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+            });
+        });
+
+        modalClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>
