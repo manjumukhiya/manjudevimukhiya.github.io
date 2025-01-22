@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manju Blogs</title>
+    <title>Advanced Blog Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -69,8 +69,8 @@
 
         .hero video {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
             min-width: 100%;
             min-height: 100%;
             width: auto;
@@ -84,6 +84,9 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+            margin: 0 20px;
         }
 
         h1, h2, h3 {
@@ -220,12 +223,22 @@
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
             .hero-content {
                 padding: 20px;
+                margin: 0 15px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                padding: 0 20px;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+
+            .hero video {
+                display: none;
             }
 
             .blog-grid {
@@ -305,24 +318,26 @@
                         <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?technology')"></div>
                         <div class="blog-content">
                             <h3 class="blog-title">The Future of AI</h3>
-                            <p class="blog-excerpt">Explore the cutting-edge advancements in artificial intelligence and their potential impact on our lives.</p>
-                            <button class="btn read-more" data-id="1">Read More</button>
+                            <p class="blog-excerpt">Explore the cutting-edge advancements in artificial intelligence and their potential impact on our world.</p>
+                            <a href="#" class="btn">Read More</a>
                         </div>
                     </div>
+
                     <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?nature')"></div>
+                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?design')"></div>
                         <div class="blog-content">
-                            <h3 class="blog-title">Sustainable Living</h3>
-                            <p class="blog-excerpt">Discover practical tips and strategies for adopting a more eco-friendly lifestyle.</p>
-                            <button class="btn read-more" data-id="2">Read More</button>
+                            <h3 class="blog-title">Innovative Design Trends</h3>
+                            <p class="blog-excerpt">Uncover the latest trends in design, from minimalism to futuristic aesthetics.</p>
+                            <a href="#" class="btn">Read More</a>
                         </div>
                     </div>
+
                     <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?health')"></div>
+                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?coding')"></div>
                         <div class="blog-content">
-                            <h3 class="blog-title">Mindfulness and Well-being</h3>
-                            <p class="blog-excerpt">Learn about the benefits of mindfulness and how to incorporate it into your daily routine.</p>
-                            <button class="btn read-more" data-id="3">Read More</button>
+                            <h3 class="blog-title">Coding for Beginners</h3>
+                            <p class="blog-excerpt">Learn the basics of coding, get tips, and start your programming journey.</p>
+                            <a href="#" class="btn">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -332,26 +347,25 @@
         <section id="about" class="about">
             <div class="container">
                 <h2>About Us</h2>
-                <p>We are passionate about sharing knowledge and inspiring our readers. Our team of expert writers covers a wide range of topics to keep you informed and entertained.</p>
-                <p>Join us on this journey of discovery and learning!</p>
+                <p>We are passionate about sharing knowledge through engaging blogs on technology, design, coding, and more. Our goal is to inspire and inform our readers, providing them with the tools they need to grow.</p>
             </div>
         </section>
 
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Contact Us</h2>
-                <p>Have a question or suggestion? We'd love to hear from you!</p>
-                <form id="contact-form">
+                <p>If you have any questions or would like to collaborate, feel free to reach out to us. We’d love to hear from you!</p>
+                <form>
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Your Email</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
+                        <label for="message">Your Message</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
                     <button type="submit" class="btn">Send Message</button>
@@ -361,134 +375,28 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 Advanced Blog Website. All rights reserved.</p>
+        <p>&copy; 2025 Advanced Blog. All rights reserved.</p>
     </footer>
 
-    <div id="blogModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <div id="modalContent"></div>
-        </div>
-    </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('blogModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalContent = document.getElementById('modalContent');
-            const closeBtn = document.getElementsByClassName('close')[0];
+        // Modal functionality
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
 
-            const blogPosts = {
-                1: {
-                    title: "The Future of AI",
-                    content: `
-                        <p>Artificial Intelligence (AI) is rapidly evolving and shaping our world in ways we never imagined. From self-driving cars to advanced medical diagnostics, AI is revolutionizing various industries and aspects of our daily lives.</p>
-                        <h3>Key Areas of AI Development</h3>
-                        <ul>
-                            <li>Machine Learning and Deep Learning</li>
-                            <li>Natural Language Processing</li>
-                            <li>Computer Vision</li>
-                            <li>Robotics</li>
-                        </ul>
-                        <p>As AI continues to advance, we can expect to see more personalized experiences, improved efficiency in various sectors, and solutions to complex global challenges. However, it's crucial to address ethical considerations and ensure that AI development benefits humanity as a whole.</p>
-                        <p>The future of AI is bright and full of possibilities. It's an exciting time to be alive and witness these groundbreaking advancements firsthand.</p>
-                    `
-                },
-                2: {
-                    title: "Sustainable Living",
-                    content: `
-                        <p>Sustainable living is becoming increasingly important as we face environmental challenges such as climate change, pollution, and resource depletion. By making conscious choices in our daily lives, we can reduce our environmental impact and contribute to a healthier planet.</p>
-                        <h3>Tips for Sustainable Living</h3>
-                        <ol>
-                            <li>Reduce, Reuse, Recycle: Minimize waste by choosing reusable items and properly recycling.</li>
-                            <li>Conserve Energy: Use energy-efficient appliances and turn off lights when not in use.</li>
-                            <li>Eat Sustainably: Choose locally sourced, organic foods and reduce meat consumption.</li>
-                            <li>Use Eco-friendly Transportation: Walk, bike, or use public transport when possible.</li>
-                            <li>Support Sustainable Brands: Choose products from companies committed to sustainability.</li>
-                        </ol>
-                        <p>Remember, small changes in our daily habits can make a big difference when it comes to sustainable living. Every action counts towards creating a more sustainable future for generations to come.</p>
-                    `
-                },
-                3: {
-                    title: "Mindfulness and Well-being",
-                    content: `
-                        <p>In today's fast-paced world, practicing mindfulness has become essential for maintaining our mental health and overall well-being. Mindfulness is the practice of being fully present and aware of our thoughts, feelings, and surroundings without judgment.
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
 
-<h3>Benefits of Mindfulness</h3>
-<ul>
-    <li>Reduced stress and anxiety</li>
-    <li>Improved focus and concentration</li>
-    <li>Enhanced emotional regulation</li>
-    <li>Better sleep quality</li>
-    <li>Increased self-awareness</li>
-</ul>
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
 
-<p>Incorporating mindfulness into your daily routine doesn't have to be complicated. Here are some simple ways to get started:</p>
-
-<ol>
-    <li>Practice deep breathing exercises</li>
-    <li>Try meditation for a few minutes each day</li>
-    <li>Engage in mindful eating by savoring each bite</li>
-    <li>Take mindful walks and observe your surroundings</li>
-    <li>Use mindfulness apps for guided exercises</li>
-</ol>
-
-<p>By cultivating mindfulness, you can improve your overall well-being and lead a more balanced, fulfilling life. Remember, it's a journey, so be patient and kind to yourself as you develop this valuable skill.</p>
-                    `
-                }
-            };
-
-            document.querySelectorAll('.read-more').forEach(button => {
-                button.addEventListener('click', function() {
-                    const postId = this.getAttribute('data-id');
-                    const post = blogPosts[postId];
-                    modalTitle.textContent = post.title;
-                    modalContent.innerHTML = post.content;
-                    modal.style.display = 'block';
-                });
-            });
-
-            closeBtn.onclick = function() {
-                modal.style.display = 'none';
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            }
-
-            const contactForm = document.getElementById('contact-form');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-            });
-
-            function isElementInViewport(el) {
-                const rect = el.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-
-            function handleScrollAnimation() {
-                const elements = document.querySelectorAll('.fade-in');
-                elements.forEach(el => {
-                    if (isElementInViewport(el)) {
-                        el.style.opacity = '1';
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', handleScrollAnimation);
-            window.addEventListener('resize', handleScrollAnimation);
-            handleScrollAnimation();
-        });
+        }
     </script>
 </body>
 </html>
