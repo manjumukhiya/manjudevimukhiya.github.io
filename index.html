@@ -1,301 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manju Blogs</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="Manju.png">
+    <title>Manju Blogs Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* General styles */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-
-        body {
-            font-family: 'Roboto', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #fff9e5;
-            color: #333;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e6f3ff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: linear-gradient(to right, #002f4b, #003f5c);
-            color: #fff9e5;
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px black;
-        }
-
-        .image-container {
-            display: inline-block;
-            width: 150px; /* Adjust size */
-            height: 150px;
-            border-radius: 50%; /* Makes the image circular */
-            overflow: hidden; /* Hides anything outside the circular container */
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-            animation: glow 3s infinite alternate; /* The glowing effect */
-            margin-bottom: 10px;
-        }
-
-        .image-container img {
+            background: linear-gradient(135deg, #6ab1e7, #4a90e2);
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            top: 0;
+            z-index: 1000;
         }
 
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 15px 5px red;
-            }
-            25% {
-                box-shadow: 0 0 15px 5px orange;
-            }
-            50% {
-                box-shadow: 0 0 15px 5px yellow;
-            }
-            75% {
-                box-shadow: 0 0 15px 5px green;
-            }
-            100% {
-                box-shadow: 0 0 15px 5px blue;
-            }
-        }
-
-        nav {
+        nav ul {
             display: flex;
             justify-content: center;
-            background: #3b6978;
-            padding: 1rem;
+            list-style: none;
         }
 
-        nav a {
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
             text-decoration: none;
-            color: #fff9e5;
-            margin: 0 1rem;
-            font-weight: bold;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        nav ul li a:hover {
+            color: #f0f0f0;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
 
-        .blog-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 1rem;
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            background: rgba(255,255,255,0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #6ab1e7, #4a90e2);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .blogs {
+            padding: 80px 0;
+        }
+
+        .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
         }
 
         .blog-card {
-            background: white;
+            background: #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         .blog-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        .blog-card img {
-            width: 100%;
+        .blog-image {
             height: 200px;
-            object-fit: cover;
+            background-size: cover;
+            background-position: center;
         }
 
-        .blog-card-content {
-            padding: 1rem;
+        .blog-content {
+            padding: 20px;
         }
 
-        .blog-card-title {
+        .blog-title {
             font-size: 1.5rem;
-            margin: 0.5rem 0;
-            color: #003f5c;
-            font-weight: bold;
-            text-shadow: 1px 1px 3px black;
-        }
-
-        .blog-card-text {
-            font-size: 1rem;
+            margin-bottom: 10px;
             color: #333;
-            margin-bottom: 1rem;
-            text-align: justify;
         }
 
-        .blog-card a {
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-weight: bold;
+        .blog-excerpt {
+            margin-bottom: 20px;
+            color: #666;
         }
 
-        .blog-card a:hover {
-            background: linear-gradient(to right, #2575fc, #6a11cb);
+        .about, .contact {
+            padding: 80px 0;
+            background: #fff;
         }
 
-        .modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 800px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 1rem;
-            z-index: 1000;
-            display: none;
-        }
-
-        .modal h3 {
-            margin-top: 0;
-        }
-
-        .modal p {
-            text-align: justify;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            display: none;
-        }
-
-        .modal-close {
-            display: block;
-            margin-top: 1rem;
+        .about h2, .contact h2 {
             text-align: center;
-            text-decoration: none;
-            background: #003f5c;
-            color: #fff9e5;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-weight: bold;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: #333;
         }
 
-        .modal-close:hover {
-            background: #6a11cb;
+        .about p, .contact p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        textarea {
+            height: 150px;
         }
 
         footer {
+            background: linear-gradient(135deg, #6ab1e7, #4a90e2);
+            color: #fff;
             text-align: center;
-            padding: 1rem;
-            background: #003f5c;
-            color: #fff9e5;
-            margin-top: 2rem;
+            padding: 20px 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content {
+                padding: 20px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3818077868471486"
-     crossorigin="anonymous"></script>
-    <meta name="google-adsense-account" content="ca-pub-3818077868471486">
 </head>
-
 <body>
-    <header> <center>
-        <!-- Circular image centered above the title -->
-        <div class="image-container">
-            <img src="Manju.png" alt="Manju Blogs">
-        </div>
-        <br></center>
-        <u><strong>Manju Blogs</strong></u>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <section id="blogs" class="blog-container">
-        <!-- Blog 1 -->
-        <div class="blog-card">
-            <img src="IMG_20250105_215229.png" alt="Blog Image">
-            <div class="blog-card-content">
-                <h3 class="blog-card-title">The Future of AI in 2025</h3>
-                <p class="blog-card-text">Artificial intelligence continues to evolve...</p>
-                <a href="#" class="read-more" data-full-article="Artificial intelligence continues to evolve and transform industries, driving automation, improving decision-making, and enhancing user experiences. As we move forward, AI is expected to play a significant role in healthcare, education, and smart city development. From personal assistants to predictive analytics, AI solutions are becoming more intuitive and accessible. However, the rise of AI also raises ethical concerns, including job displacement and data privacy issues. As we embrace this technology, balancing innovation with regulation is key to ensuring a positive impact on society.">Read More</a>
+    <main>
+        <section id="home" class="hero">
+            <video autoplay loop muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content fade-in">
+                <h1>Welcome to Manju Blogs</h1>
+                <p>Discover amazing stories and insights</p>
+                <a href="#blogs" class="btn">Explore Blogs</a>
             </div>
-        </div>
-        <!-- Blog 2 -->
-<div class="blog-card">
-    <img src="IMG_20250108_205543.jpg" alt="Blog Image">
-    <div class="blog-card-content">
-        <h3 class="blog-card-title">The Most Searched Keyword on Google in 2025</h3>
-        <p class="blog-card-text">As we step into 2025, the digital world...</p>
-        <a href="#" class="read-more" data-full-article="As we step into 2025, the digital world continues to evolve, driven by technological advancements and societal trends. Unsurprisingly, Google remains the go-to platform for billions seeking information, making its search trends a fascinating reflection of global interests. This year, one keyword dominated the search landscape: 'AI tools.'
+        </section>
 
-Artificial Intelligence has been a buzzword for years, but 2025 has seen an unprecedented surge in interest. The widespread adoption of AI-powered applications across industries, from healthcare and education to entertainment and personal productivity, has made it the most searched topic worldwide. Individuals and businesses alike are curious about the latest AI tools, their potential applications, and how they can improve efficiency or enhance creativity.
+        <section id="blogs" class="blogs">
+            <div class="container">
+                <h2>Latest Blogs</h2>
+                <div class="blog-grid">
+                    <div class="blog-card fade-in">
+                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?technology')"></div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">The Future of AI</h3>
+                            <p class="blog-excerpt">Explore the cutting-edge advancements in artificial intelligence and their potential impact on our lives.</p>
+                            <button class="btn read-more" data-id="1">Read More</button>
+                        </div>
+                    </div>
+                    <div class="blog-card fade-in">
+                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?nature')"></div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">Sustainable Living</h3>
+                            <p class="blog-excerpt">Discover practical tips and strategies for adopting a more eco-friendly lifestyle.</p>
+                            <button class="btn read-more" data-id="2">Read More</button>
+                        </div>
+                    </div>
+                    <div class="blog-card fade-in">
+                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?health')"></div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">Mindfulness and Well-being</h3>
+                            <p class="blog-excerpt">Learn about the benefits of mindfulness and how to incorporate it into your daily routine.</p>
+                            <button class="btn read-more" data-id="3">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-The rise of 'AI tools' as a top keyword also highlights society’s quest to adapt to rapid technological changes. With new AI-driven platforms emerging almost daily, people are eager to stay updated, learning how to integrate these tools into their personal and professional lives. From generative AI models that craft stunning visual art to machine learning algorithms revolutionizing financial forecasting, the possibilities seem endless.
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>We are passionate about sharing knowledge and inspiring our readers. Our team of expert writers covers a wide range of topics to keep you informed and entertained.</p>
+                <p>Join us on this journey of discovery and learning!</p>
+            </div>
+        </section>
 
-Interestingly, the surge in 'AI tools' searches is also linked to education and self-improvement. Online courses, tutorials, and webinars focused on AI skills are trending, reflecting a global shift towards upskilling in the tech-driven era.
-
-Beyond AI, other popular search terms in 2025 include climate change solutions, cryptocurrency trends, and virtual reality entertainment. However, the dominance of 'AI tools' indicates that humanity’s focus is firmly set on leveraging technology to navigate an increasingly complex world.
-
-As the year progresses, it will be fascinating to see how search trends evolve and what they reveal about our collective priorities and aspirations. For now, it’s clear that AI continues to capture the imagination of millions, shaping the way we live and work in 2025.">Read More</a>
-    </div>
-</div>
-
-        <!-- Repeat similar structure for other blogs -->
-    </section>
-
-    <!-- Modal -->
-    <div class="overlay"></div>
-    <div class="modal">
-        <h3 id="modal-title">Title</h3>
-        <p id="modal-content">Full article content goes here...</p>
-        <a href="#" class="modal-close">Close</a>
-    </div>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Have a question or suggestion? We'd love to hear from you!</p>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        © 2025 Shiv Sahani. All Rights Reserved.
+        <p>&copy; 2023 Advanced Blog Website. All rights reserved.</p>
     </footer>
 
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
     <script>
-        // JavaScript for modal functionality
-        const readMoreLinks = document.querySelectorAll('.read-more');
-        const modal = document.querySelector('.modal');
-        const overlay = document.querySelector('.overlay');
-        const modalTitle = document.getElementById('modal-title');
-        const modalContent = document.getElementById('modal-content');
-        const modalClose = document.querySelector('.modal-close');
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('blogModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            const closeBtn = document.getElementsByClassName('close')[0];
 
-        readMoreLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                modalTitle.textContent = link.previousElementSibling.previousElementSibling.textContent;
-                modalContent.textContent = link.getAttribute('data-full-article');
-                modal.style.display = 'block';
-                overlay.style.display = 'block';
+            const blogPosts = {
+                1: {
+                    title: "The Future of AI",
+                    content: `
+                        <p>Artificial Intelligence (AI) is rapidly evolving and shaping our world in ways we never imagined. From self-driving cars to advanced medical diagnostics, AI is revolutionizing various industries and aspects of our daily lives.</p>
+                        <h3>Key Areas of AI Development</h3>
+                        <ul>
+                            <li>Machine Learning and Deep Learning</li>
+                            <li>Natural Language Processing</li>
+                            <li>Computer Vision</li>
+                            <li>Robotics</li>
+                        </ul>
+                        <p>As AI continues to advance, we can expect to see more personalized experiences, improved efficiency in various sectors, and solutions to complex global challenges. However, it's crucial to address ethical considerations and ensure that AI development benefits humanity as a whole.</p>
+                        <p>The future of AI is bright and full of possibilities. It's an exciting time to be alive and witness these groundbreaking advancements firsthand.</p>
+                    `
+                },
+                2: {
+                    title: "Sustainable Living",
+                    content: `
+                        <p>Sustainable living is becoming increasingly important as we face environmental challenges such as climate change, pollution, and resource depletion. By making conscious choices in our daily lives, we can reduce our environmental impact and contribute to a healthier planet.</p>
+                        <h3>Tips for Sustainable Living</h3>
+                        <ol>
+                            <li>Reduce, Reuse, Recycle: Minimize waste by choosing reusable items and properly recycling.</li>
+                            <li>Conserve Energy: Use energy-efficient appliances and turn off lights when not in use.</li>
+                            <li>Eat Sustainably: Choose locally sourced, organic foods and reduce meat consumption.</li>
+                            <li>Use Eco-friendly Transportation: Walk, bike, or use public transport when possible.</li>
+                            <li>Support Sustainable Brands: Choose products from companies committed to sustainability.</li>
+                        </ol>
+                        <p>Remember, small changes in our daily habits can make a big difference when it comes to sustainable living. Every action counts towards creating a more sustainable future for generations to come.</p>
+                    `
+                },
+                3: {
+                    title: "Mindfulness and Well-being",
+                    content: `
+                        <p>In today's fast-paced world, practicing mindfulness has become essential for maintaining our mental health and overall well-being. Mindfulness is the practice of being fully present and aware of our thoughts, feelings, and surroundings without judgment.
+
+<h3>Benefits of Mindfulness</h3>
+<ul>
+    <li>Reduced stress and anxiety</li>
+    <li>Improved focus and concentration</li>
+    <li>Enhanced emotional regulation</li>
+    <li>Better sleep quality</li>
+    <li>Increased self-awareness</li>
+</ul>
+
+<p>Incorporating mindfulness into your daily routine doesn't have to be complicated. Here are some simple ways to get started:</p>
+
+<ol>
+    <li>Practice deep breathing exercises</li>
+    <li>Try meditation for a few minutes each day</li>
+    <li>Engage in mindful eating by savoring each bite</li>
+    <li>Take mindful walks and observe your surroundings</li>
+    <li>Use mindfulness apps for guided exercises</li>
+</ol>
+
+<p>By cultivating mindfulness, you can improve your overall well-being and lead a more balanced, fulfilling life. Remember, it's a journey, so be patient and kind to yourself as you develop this valuable skill.</p>
+                    `
+                }
+            };
+
+            document.querySelectorAll('.read-more').forEach(button => {
+                button.addEventListener('click', function() {
+                    const postId = this.getAttribute('data-id');
+                    const post = blogPosts[postId];
+                    modalTitle.textContent = post.title;
+                    modalContent.innerHTML = post.content;
+                    modal.style.display = 'block';
+                });
             });
-        });
 
-        modalClose.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.style.display = 'none';
-            overlay.style.display = 'none';
-        });
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
 
-        overlay.addEventListener('click', () => {
-            modal.style.display = 'none';
-            overlay.style.display = 'none';
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function handleScrollAnimation() {
+                const elements = document.querySelectorAll('.fade-in');
+                elements.forEach(el => {
+                    if (isElementInViewport(el)) {
+                        el.style.opacity = '1';
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', handleScrollAnimation);
+            window.addEventListener('resize', handleScrollAnimation);
+            handleScrollAnimation();
         });
     </script>
 </body>
-
 </html>
