@@ -743,6 +743,67 @@ Our website uses cookies to enhance user experience. Cookies are small files sto
 
 Our website may include links to third-party websites, advertisements, or services that are not operated by us. We are not responsible for the content, privacy policies, or practices of any third-party sites.
 
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogModal = document.getElementById('blogModal');
+            const privacyModal = document.getElementById('privacyModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            const modalImage = document.getElementById('modalImage');
+            const closeBtns = document.getElementsByClassName('close');
+            const menuToggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('menu');
+            const menuIcon = menuToggle.querySelector('i');
+
+            const blogPosts = {
+                1: {
+                    title: "Quantum Computing Breakthrough",
+      <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="/placeholder.svg" alt="Blog post image" class="modal-image">
+            <h2 id="modalTitle"></h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Privacy Policy</h2>
+            <div id="privacyContent">
+                <p>Effective Date: January 26, 2025
+
+At Manju Blogs, accessible from manjudevimukhiya.com.np, one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information that is collected and recorded by Manju Blogs and how we use it.
+
+1. Information We Collect
+
+We collect personal information from users when they subscribe to our newsletter, leave comments, or interact with our website. The information may include:
+
+Personal Identification Information: Name, email address, and other details provided by users.
+
+Non-Personal Identification Information: Log data such as IP address, browser type, and usage patterns on the site.
+
+
+2. How We Use Your Information
+
+The information we collect is used in the following ways:
+
+To personalize user experience and respond to inquiries or requests.
+
+To send periodic emails, updates, or newsletters.
+
+To analyze site traffic and improve website functionality and content.
+
+
+3. Cookies
+
+Our website uses cookies to enhance user experience. Cookies are small files stored on your device that help us understand user behavior and preferences. You can choose to disable cookies through your browser settings, but this may impact the functionality of certain features on the website.
+
+4. Third-Party Links
+
+Our website may include links to third-party websites, advertisements, or services that are not operated by us. We are not responsible for the content, privacy policies, or practices of any third-party sites.
+
 5. Data Security
 
 We take appropriate measures to protect your personal data, using security protocols and technologies. However, please note that no method of transmission over the internet or electronic storage is 100% secure.
@@ -758,29 +819,9 @@ We reserve the right to update or change this Privacy Policy at any time. When c
 8. Contact Us
 
 If you have any questions about this Privacy Policy, please contact us at manjumukhiyaofficial@gmail.com.
-
-</p>
-                <!-- Add more privacy policy content here -->
             </div>
         </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const blogModal = document.getElementById('blogModal');
-            const privacyModal = document.getElementById('privacyModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalContent = document.getElementById('modalContent');
-            const modalImage = document.getElementById('modalImage');
-            const closeBtns = document.getElementsByClassName('close');
-            const menuToggle = document.getElementById('menuToggle');
-            const menu = document.getElementById('menu');
-            const menuIcon = menuToggle.querySelector('i');
-
-            const blogPosts = {
-                1: {
-                    title: "Quantum Computing Breakthrough",
-                    content: "<p>In a groundbreaking development, researchers have achieved a major milestone in quantum computing. This breakthrough promises to revolutionize data processing and encryption, potentially solving complex problems that are currently intractable for classical computers.</p><p>The implications of this advancement span across various fields, including cryptography, drug discovery, and financial modeling. As quantum computers become more powerful and reliable, we can expect to see transformative changes in industries ranging from cybersecurity to materials science.</p>",
+    </div>              content: "<p>In a groundbreaking development, researchers have achieved a major milestone in quantum computing. This breakthrough promises to revolutionize data processing and encryption, potentially solving complex problems that are currently intractable for classical computers.</p><p>The implications of this advancement span across various fields, including cryptography, drug discovery, and financial modeling. As quantum computers become more powerful and reliable, we can expect to see transformative changes in industries ranging from cybersecurity to materials science.</p>",
                     image: "/placeholder.svg?height=400&width=600"
                 },
                 2: {
