@@ -56,39 +56,48 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        margin-right: 10px;
+        overflow: visible;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: relative;
-        overflow: hidden;
     }
 
     .logo-circle::before {
         content: '';
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
         background: conic-gradient(
             #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000
         );
-        animation: rotate 4s linear infinite;
+        border-radius: 50%;
+        z-index: 0;
+        animation: rotate 3s linear infinite;
     }
 
     .logo-circle::after {
         content: '';
         position: absolute;
-        top: 2px;
-        left: 2px;
-        right: 2px;
-        bottom: 2px;
-        background: white;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #f0f0f0;
         border-radius: 50%;
+        z-index: 1;
     }
 
-    @keyframes rotate {
-        100% {
-            transform: rotate(360deg);
-        }
+    .logo-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
     }
 
     .logo-text {
@@ -534,6 +543,12 @@
         border-radius: 10px;
         margin-bottom: 20px;
     }
+
+    @keyframes rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
     </style>
 </head>
 <body>
@@ -541,7 +556,7 @@
         <div class="logo-container">
             <div class="logo-wrapper">
                 <div class="logo-circle">
-    <img src="manjublogs.png" alt="Logo">
+                    <img src="manjublogs.png" alt="Logo">
                 </div>
                 <span class="logo-text">ManjuBlogs</span>
             </div>
@@ -602,52 +617,51 @@
                         </div>
                     </div>
                     
-<div class="blog-card slide-in">
-    <div class="blog-image" style="background-image: url('ai_tools.jpg');"></div>
-    <div class="blog-content">
-        <p class="blog-date">January 07, 2025</p>
-        <h3 class="blog-title">Artificial Intelligence Tools: Revolutionizing 2025</h3>
-        <p class="blog-excerpt">Explore how AI tools have transformed industries and daily life in 2025, from advanced chatbots to creative applications.</p>
-        <a href="#" class="btn read-more" data-id="1">Read More</a>
-    </div>
-</div>
-<div class="blog-card slide-in">
-    <div class="blog-image" style="background-image: url('electric_vehicles.jpg');"></div>
-    <div class="blog-content">
-        <p class="blog-date">January 08, 2025</p>
-        <h3 class="blog-title">Electric Vehicles: Driving the Future Forward</h3>
-        <p class="blog-excerpt">An in-depth look at the surge of electric vehicles in 2025, highlighting new models, technological advancements, and market trends.</p>
-        <a href="#" class="btn read-more" data-id="2">Read More</a>
-    </div>
-</div>
-<div class="blog-card slide-in">
-    <div class="blog-image" style="background-image: url('climate_change.jpg');"></div>
-    <div class="blog-content">
-        <p class="blog-date">January 08, 2025</p>
-        <h3 class="blog-title">Climate Change and Natural Disasters: 2025 in Review</h3>
-        <p class="blog-excerpt">Analyzing the impact of climate change in 2025, including major natural disasters and global responses to environmental challenges.</p>
-        <a href="#" class="btn read-more" data-id="3">Read More</a>
-    </div>
-</div>
-<div class="blog-card slide-in">
-    <div class="blog-image" style="background-image: url('cryptocurrency.jpg');"></div>
-    <div class="blog-content">
-        <p class="blog-date">January 09, 2025</p>
-        <h3 class="blog-title">Cryptocurrency and Blockchain: The 2025 Landscape</h3>
-        <p class="blog-excerpt">Delving into the developments in cryptocurrency and blockchain technology in 2025, including market trends and regulatory changes.</p>
-        <a href="#" class="btn read-more" data-id="4">Read More</a>
-    </div>
-</div>
-<div class="blog-card slide-in">
-    <div class="blog-image" style="background-image: url('health_wellness.jpg');"></div>
-    <div class="blog-content">
-        <p class="blog-date">January 10, 2025</p>
-        <h3 class="blog-title">Health and Wellness Trends in 2025</h3>
-        <p class="blog-excerpt">A comprehensive guide to the top health and wellness trends of 2025, from plant-based diets to mental health innovations.</p>
-        <a href="#" class="btn read-more" data-id="5">Read More</a>
-    </div>
-</div>
-
+                    <div class="blog-card slide-in">
+                        <div class="blog-image" style="background-image: url('ai_tools.jpg');"></div>
+                        <div class="blog-content">
+                            <p class="blog-date">January 07, 2025</p>
+                            <h3 class="blog-title">Artificial Intelligence Tools: Revolutionizing 2025</h3>
+                            <p class="blog-excerpt">Explore how AI tools have transformed industries and daily life in 2025, from advanced chatbots to creative applications.</p>
+                            <a href="#" class="btn read-more" data-id="4">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card slide-in">
+                        <div class="blog-image" style="background-image: url('electric_vehicles.jpg');"></div>
+                        <div class="blog-content">
+                            <p class="blog-date">January 08, 2025</p>
+                            <h3 class="blog-title">Electric Vehicles: Driving the Future Forward</h3>
+                            <p class="blog-excerpt">An in-depth look at the surge of electric vehicles in 2025, highlighting new models, technological advancements, and market trends.</p>
+                            <a href="#" class="btn read-more" data-id="5">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card slide-in">
+                        <div class="blog-image" style="background-image: url('climate_change.jpg');"></div>
+                        <div class="blog-content">
+                            <p class="blog-date">January 08, 2025</p>
+                            <h3 class="blog-title">Climate Change and Natural Disasters: 2025 in Review</h3>
+                            <p class="blog-excerpt">Analyzing the impact of climate change in 2025, including major natural disasters and global responses to environmental challenges.</p>
+                            <a href="#" class="btn read-more" data-id="6">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card slide-in">
+                        <div class="blog-image" style="background-image: url('cryptocurrency.jpg');"></div>
+                        <div class="blog-content">
+                            <p class="blog-date">January 09, 2025</p>
+                            <h3 class="blog-title">Cryptocurrency and Blockchain: The 2025 Landscape</h3>
+                            <p class="blog-excerpt">Delving into the developments in cryptocurrency and blockchain technology in 2025, including market trends and regulatory changes.</p>
+                            <a href="#" class="btn read-more" data-id="7">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card slide-in">
+                        <div class="blog-image" style="background-image: url('health_wellness.jpg');"></div>
+                        <div class="blog-content">
+                            <p class="blog-date">January 10, 2025</p>
+                            <h3 class="blog-title">Health and Wellness Trends in 2025</h3>
+                            <p class="blog-excerpt">A comprehensive guide to the top health and wellness trends of 2025, from plant-based diets to mental health innovations.</p>
+                            <a href="#" class="btn read-more" data-id="8">Read More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -715,54 +729,53 @@
             <h2>Privacy Policy</h2>
             <div id="privacyContent">
                 <p>
+                Effective Date: January 26, 2025
 
-Effective Date: January 26, 2025
+                At Manju Blogs, accessible from manjudevimukhiya.com.np, one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information that is collected and recorded by Manju Blogs and how we use it.
 
-At Manju Blogs, accessible from manjudevimukhiya.com.np, one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information that is collected and recorded by Manju Blogs and how we use it.
+                1. Information We Collect
 
-1. Information We Collect
+                We collect personal information from users when they subscribe to our newsletter, leave comments, or interact with our website. The information may include:
 
-We collect personal information from users when they subscribe to our newsletter, leave comments, or interact with our website. The information may include:
+                Personal Identification Information: Name, email address, and other details provided by users.
 
-Personal Identification Information: Name, email address, and other details provided by users.
-
-Non-Personal Identification Information: Log data such as IP address, browser type, and usage patterns on the site.
-
-
-2. How We Use Your Information
-
-The information we collect is used in the following ways:
-
-To personalize user experience and respond to inquiries or requests.
-
-To send periodic emails, updates, or newsletters.
-
-To analyze site traffic and improve website functionality and content.
+                Non-Personal Identification Information: Log data such as IP address, browser type, and usage patterns on the site.
 
 
-3. Cookies
+                2. How We Use Your Information
 
-Our website uses cookies to enhance user experience. Cookies are small files stored on your device that help us understand user behavior and preferences. You can choose to disable cookies through your browser settings, but this may impact the functionality of certain features on the website.
+                The information we collect is used in the following ways:
 
-4. Third-Party Links
+                To personalize user experience and respond to inquiries or requests.
 
-Our website may include links to third-party websites, advertisements, or services that are not operated by us. We are not responsible for the content, privacy policies, or practices of any third-party sites.
+                To send periodic emails, updates, or newsletters.
 
-5. Data Security
+                To analyze site traffic and improve website functionality and content.
 
-We take appropriate measures to protect your personal data, using security protocols and technologies. However, please note that no method of transmission over the internet or electronic storage is 100% secure.
 
-6. Your Rights
+                3. Cookies
 
-You have the right to access, correct, or request deletion of your personal information. If you wish to exercise these rights or have any concerns, please contact us at manjumukhiyaofficial@gmail.com.
+                Our website uses cookies to enhance user experience. Cookies are small files stored on your device that help us understand user behavior and preferences. You can choose to disable cookies through your browser settings, but this may impact the functionality of certain features on the website.
 
-7. Changes to This Privacy Policy
+                4. Third-Party Links
 
-We reserve the right to update or change this Privacy Policy at any time. When changes are made, the "Effective Date" at the top of the page will be updated. We encourage users to check this page periodically for any updates.
+                Our website may include links to third-party websites, advertisements, or services that are not operated by us. We are not responsible for the content, privacy policies, or practices of any third-party sites.
 
-8. Contact Us
+                5. Data Security
 
-If you have any questions about this Privacy Policy, please contact us at manjumukhiyaofficial@gmail.com.
+                We take appropriate measures to protect your personal data, using security protocols and technologies. However, please note that no method of transmission over the internet or electronic storage is 100% secure.
+
+                6. Your Rights
+
+                You have the right to access, correct, or request deletion of your personal information. If you wish to exercise these rights or have any concerns, please contact us at [email protected]
+
+                7. Changes to This Privacy Policy
+
+                We reserve the right to update or change this Privacy Policy at any time. When changes are made, the "Effective Date" at the top of the page will be updated. We encourage users to check this page periodically for any updates.
+
+                8. Contact Us
+
+                If you have any questions about this Privacy Policy, please contact us at [email protected]
                 </p>
             </div>
         </div>
@@ -794,8 +807,31 @@ If you have any questions about this Privacy Policy, please contact us at manjum
                     title: "Sustainable Energy Revolution",
                     content: "<p>The world is witnessing a sustainable energy revolution as breakthroughs in renewable energy technologies pave the way for a cleaner, greener future. Innovations in solar panel efficiency, wind turbine design, and energy storage solutions are making renewable energy more accessible and affordable than ever before.</p><p>Countries around the globe are setting ambitious targets for carbon neutrality, driving investment and research into sustainable energy solutions. From floating solar farms to advanced geothermal systems, these technologies are not only addressing climate change but also creating new economic opportunities in the green energy sector.</p>",
                     image: "/placeholder.svg?height=400&width=600"
+                },
+                4: {
+                    title: "Artificial Intelligence Tools: Revolutionizing 2025",
+                    content: "<p>The year 2025 has seen an unprecedented integration of AI tools across various sectors. From advanced chatbots that provide human-like customer service to AI-driven creative tools that assist in content creation, the impact is far-reaching. These tools are not just enhancing productivity but are also opening up new avenues for innovation and problem-solving.</p><p>In the business world, AI-powered analytics are providing deeper insights and predictive capabilities, while in education, personalized learning experiences are becoming the norm. As we continue to explore the potential of AI, ethical considerations and responsible development remain at the forefront of this technological revolution.</p>",
+                    image: "ai_tools.jpg"
+                },
+                5: {
+                    title: "Electric Vehicles: Driving the Future Forward",
+                    content: "<p>The electric vehicle (EV) market has experienced exponential growth in 2025. With advancements in battery technology, increased range, and faster charging capabilities, EVs are now a viable option for a wider range of consumers. Major automakers have expanded their EV lineups, offering everything from compact city cars to luxury SUVs.</p><p>Infrastructure development has kept pace, with charging stations becoming as common as gas stations in many urban areas. Government incentives and stricter emission regulations have further accelerated the transition to electric mobility. As the world moves towards a more sustainable future, electric vehicles are playing a crucial role in reducing carbon emissions and reshaping the automotive industry.</p>",
+                    image: "electric_vehicles.jpg"
+                },
+                6: {
+                    title: "Climate Change and Natural Disasters: 2025 in Review",
+                    content: "<p>The year 2025 has been marked by significant climate events that have underscored the urgency of addressing global warming. From record-breaking heatwaves to more frequent and intense hurricanes, the impact of climate change has been felt worldwide. These events have led to increased public awareness and demand for action.</p><p>In response, governments and organizations have ramped up efforts to combat climate change. Innovative technologies for carbon capture and storage have gained traction, while reforestation projects and sustainable urban planning initiatives have become priorities. The year has also seen unprecedented international cooperation, with new global agreements aimed at reducing greenhouse gas emissions and promoting sustainable development.</p>",
+                    image: "climate_change.jpg"
+                },7: {
+                    title: "Cryptocurrency and Blockchain: The 2025 Landscape",
+                    content: "<p>The cryptocurrency and blockchain landscape has undergone significant transformations in 2025. With increased mainstream adoption, cryptocurrencies have become an integral part of the global financial system. Central Bank Digital Currencies (CBDCs) have been launched by several major economies,bridging the gap between traditional finance and the crypto world.</p><p>Blockchain technology has expanded far beyond cryptocurrencies, finding applications in supply chain management, digital identity verification, and decentralized finance (DeFi). The rise of Web3 technologies has led to a new era of decentralized applications and services, challenging traditional business models and empowering users with greater control over their data and digital assets.</p>",
+                    image: "cryptocurrency.jpg"
+                },
+                8: {
+                    title: "Health and Wellness Trends in 2025",
+                    content: "<p>The health and wellness industry has seen a paradigm shift in 2025, with a focus on holistic and personalized approaches. Advancements in genetic testing and AI-driven health analytics have paved the way for truly individualized nutrition and fitness plans. Plant-based diets have become mainstream, supported by innovations in alternative protein sources and lab-grown meats.</p><p>Mental health hastaken center stage, with virtual reality therapy and AI-powered mental health apps becoming widely accessible. Workplace wellness programs have evolved to address the needs of remote and hybrid work environments, emphasizing digital detox, ergonomics, and work-life balance. As society continues to prioritize well-being, these trends are shaping a healthier, more mindful future.</p>",
+                    image: "health_wellness.jpg"
                 }
-                // Add more blog posts here...
             };
 
             document.querySelectorAll('.read-more').forEach(button => {
