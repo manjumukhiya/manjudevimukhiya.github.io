@@ -31,7 +31,7 @@
     header {
         background: linear-gradient(135deg, #6ab1e7, #4a90e2);
         color: #fff;
-        padding: 20px 0;
+        padding: 20px;
         position: fixed;
         width: 100%;
         top: 0;
@@ -43,8 +43,13 @@
 
     .logo-container {
         display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo-wrapper {
+        display: flex;
         align-items: center;
-        justify-content: center;
     }
 
     .logo-circle {
@@ -87,37 +92,73 @@
     }
 
     .logo-text {
-        font-family: 'Playfair Display', serif;
+        font-family: 'cursive', serif;
         font-weight: 700;
-        font-size: 1.2rem;
+        font-size: 40px;
         color: #fff;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    }
+
+    .slogan {
+        font-size: 14px;
+        font-style: italic;
+        margin-top: 5px;
     }
 
     .menu-icon {
+        display: none;
         font-size: 1.5rem;
         cursor: pointer;
+        z-index: 1001;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+
+    .menu-icon::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255,255,0,0.3) 0%, rgba(255,255,0,0) 70%);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .menu-icon:active::before,
+    .menu-icon.active::before {
+        opacity: 1;
+    }
+
+    .menu-icon i {
+        z-index: 1;
+    }
+
+    nav {
         margin-left: 20px;
     }
 
     nav ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(135deg, #6ab1e7, #4a90e2);
-        flex-direction: column;
-        padding: 20px 0;
-    }
-
-    nav ul.show {
         display: flex;
+        list-style-type: none;
+        background: linear-gradient(to bottom, #000080, #000000);
+        padding: 10px;
+        border-radius: 10px;
     }
 
     nav ul li {
-        margin: 10px 0;
-        text-align: center;
+        margin-right: 10px;
+    }
+
+    nav ul li:last-child {
+        margin-right: 0;
     }
 
     nav ul li a {
@@ -125,18 +166,49 @@
         text-decoration: none;
         font-weight: 600;
         transition: all 0.3s ease;
+        padding: 10px 15px;
+        border-radius: 20px;
+        display: block;
     }
 
+    nav ul li a:hover,
+    nav ul li a:focus,
     nav ul li a.active {
-        background-color: #90EE90;
-        color: #000;
-        border-radius: 10px;
-        padding: 5px 10px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
     }
 
-    nav ul li a:hover {
-        color: #f0f0f0;
-        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    @media (max-width: 768px) {
+        nav {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        nav ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, #000080, #000000);
+            flex-direction: column;
+            padding: 20px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul.show {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        nav ul li:last-child {
+            margin-bottom: 0;
+        }
     }
 
     .hero {
@@ -147,13 +219,13 @@
         text-align: center;
         position: relative;
         overflow: hidden;
-        margin-top: 100px;
-        margin-bottom: 60px;
+        margin-top: 180px;
+        margin-bottom: 20px;
     }
 
     .hero-content {
         background: rgba(255,255,255,0.8);
-        padding: 40px;
+        padding: 30px;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0,0,0,0.1);
         margin: 0 20px;
@@ -188,12 +260,12 @@
     }
 
     .blogs {
-        padding: 80px 0;
+        padding: 30px 0;
     }
 
     .blog-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 30px;
     }
 
@@ -203,11 +275,6 @@
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         transition: all 0.3s ease;
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    .blog-card.animate {
         opacity: 1;
         transform: translateY(0);
     }
@@ -238,9 +305,23 @@
         color: #666;
     }
 
+    .blog-date {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 10px;
+    }
+
     .about, .contact, .visit {
-        padding: 80px 0;
-        background: #fff;
+        padding: 60px 0;
+        background: #f0f0f0;
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .about.animate, .contact.animate, .visit.animate {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .about h2, .contact h2, .visit h2 {
@@ -248,28 +329,13 @@
         margin-bottom: 40px;
         font-size: 2.5rem;
         color: #333;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
-    }
-
-    .about h2.animate, .contact h2.animate, .visit h2.animate {
-        opacity: 1;
-        transform: translateY(0);
     }
 
     .about p, .contact p {
         text-align: center;
         max-width: 800px;
         margin: 0 auto 20px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
-    }
-
-    .about p.animate, .contact p.animate {
-        opacity: 1;
-        transform: translateY(0);
+        line-height: 1.8;
     }
 
     form {
@@ -314,20 +380,33 @@
     }
 
     .social-links a {
-        color: #4a90e2;
         font-size: 2rem;
         margin: 0 10px;
         transition: all 0.3s ease;
     }
 
     .social-links a:hover {
-        color: #2a70c2;
         transform: translateY(-3px);
+    }
+
+    .social-links a.facebook {
+        color: #1877F2;
+    }
+
+    .social-links a.twitter {
+        color: #1DA1F2;
+    }
+
+    .social-links a.instagram {
+        background: -webkit-linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .social-links a.whatsapp {
         color: #25D366;
     }
+
     .social-links a.email {
         color: #D44638;
     }
@@ -338,19 +417,56 @@
     }
 
     @keyframes slideIn {
-        from { transform: translateY(50px); opacity: 0; }
+        from { transform: translateY(20px); opacity: 0; }
         to { transform: translateY(0); opacity: 1; }
     }
 
     .fade-in {
-        animation: fadeIn 1s ease-out;
+        animation: fadeIn 0.5s ease-out;
     }
 
     .slide-in {
-        animation: slideIn 1s ease-out;
+        animation: slideIn 0.5s ease-out;
     }
 
     @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .logo-container {
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-icon {
+            display: flex;
+        }
+
+        nav {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        nav ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, #000080, #000000);
+            flex-direction: column;
+            padding: 20px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul.show {
+            display: flex;
+        }
+
         h1 {
             font-size: 2.5rem;
         }
@@ -401,35 +517,54 @@
         text-decoration: none;
         cursor: pointer;
     }
-</style>
+
+    .highlight-effect {
+        transition: all 0.3s ease;
+    }
+
+    .highlight-effect:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(106, 177, 231, 0.5);
+    }
+
+    .modal-image {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    </style>
 </head>
 <body>
     <header>
-        <div class="menu-icon" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </div>
         <div class="logo-container">
-            <div class="logo-circle"></div>
-            <span class="logo-text">Manju Blogs</span>
+            <div class="logo-wrapper">
+                <div class="logo-circle"></div>
+                <span class="logo-text">ManjuBlogs</span>
+            </div>
+            <span class="slogan">Your Daily Dose Of Internet</span>
         </div>
-        <div style="width: 24px;"></div> <!-- Placeholder for alignment -->
+        
         <nav>
             <ul id="menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#blogs">Blogs</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#visit">Visit us</a></li>
+                <li><a href="#" id="privacy-policy">Privacy & Policy</a></li>
             </ul>
         </nav>
+        <div class="menu-icon" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
 
     <main>
         <section id="home" class="hero">
             <div class="hero-content fade-in">
                 <h1>Welcome to our platform</h1>
-                <p>Discover amazing stories, articles and insights</p>
-                <a href="#blogs" class="btn slide-in">Explore Blogs</a>
+                <p>Discover amazing stories, articles, news and insights.</p>
             </div>
         </section>
 
@@ -437,126 +572,96 @@
             <div class="container">
                 <h2>Latest Blogs</h2>
                 <div class="blog-grid">
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?technology')"></div>
+                    <div class="blog-card slide-in">
+                        <div class="blog-image" style="background-image: url('/placeholder.svg?height=200&width=300');"></div>
                         <div class="blog-content">
-                            <h3 class="blog-title">The Future of AI</h3>
-                            <p class="blog-excerpt">Explore the cutting-edge advancements in artificial intelligence and their potential impact on our lives.</p>
-                            <button class="btn read-more" data-id="1">Read More</button>
+                            <p class="blog-date">January 15, 2025</p>
+                            <h3 class="blog-title">Quantum Computing Breakthrough</h3>
+                            <p class="blog-excerpt">Major advancements in quantum computing promise to revolutionize data processing and encryption.</p>
+                            <a href="#" class="btn read-more" data-id="1">Read More</a>
                         </div>
                     </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?nature')"></div>
+                    <div class="blog-card slide-in">
+                        <div class="blog-image" style="background-image: url('/placeholder.svg?height=200&width=300');"></div>
                         <div class="blog-content">
-                            <h3 class="blog-title">Sustainable Living</h3>
-                            <p class="blog-excerpt">Discover practical tips and strategies for adopting a more eco-friendly lifestyle.</p>
-                            <button class="btn read-more" data-id="2">Read More</button>
+                            <p class="blog-date">January 03, 2025</p>
+                            <h3 class="blog-title">AI in Healthcare: A New Era</h3>
+                            <p class="blog-excerpt">Artificial Intelligence is transforming medical diagnoses and treatment plans, improving patient outcomes.</p>
+                            <a href="#" class="btn read-more" data-id="2">Read More</a>
                         </div>
                     </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?health')"></div>
+                    <div class="blog-card slide-in">
+                        <div class="blog-image" style="background-image: url('/placeholder.svg?height=200&width=300');"></div>
                         <div class="blog-content">
-                            <h3 class="blog-title">Mindfulness and Well-being</h3>
-                            <p class="blog-excerpt">Learn about the benefits of mindfulness and how to incorporate it into your daily routine.</p>
-                            <button class="btn read-more" data-id="3">Read More</button>
+                            <p class="blog-date">January 06, 2025</p>
+                            <h3 class="blog-title">Sustainable Energy Revolution</h3>
+                            <p class="blog-excerpt">Breakthroughs in renewable energy technologies are paving the way for a sustainable future.</p>
+                            <a href="#" class="btn read-more" data-id="3">Read More</a>
                         </div>
                     </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?quantum-computing')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Quantum Computing Revolution</h3>
-                            <p class="blog-excerpt">Discover how quantum computing is set to transform industries and solve complex problems.</p>
-                            <button class="btn read-more" data-id="4">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?space-exploration')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">New Frontiers in Space Exploration</h3>
-                            <p class="blog-excerpt">Explore the latest developments in space technology and upcoming missions to Mars and beyond.</p>
-                            <button class="btn read-more" data-id="5">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?renewable-energy')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Renewable Energy Breakthroughs</h3>
-                            <p class="blog-excerpt">Learn about the latest innovations in clean energy technology and their impact on climate change.</p>
-                            <button class="btn read-more" data-id="6">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?biotechnology')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Advancements in Biotechnology</h3>
-                            <p class="blog-excerpt">Discover the latest breakthroughs in genetic engineering and their potential applications in medicine and agriculture.</p>
-                            <button class="btn read-more" data-id="7">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?virtual-reality')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">The Future of Virtual Reality</h3>
-                            <p class="blog-excerpt">Explore how VR technology is revolutionizing entertainment, education, and professional training.</p>
-                            <button class="btn read-more" data-id="8">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?cybersecurity')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Cybersecurity in the Digital Age</h3>
-                            <p class="blog-excerpt">Learn about emerging threats in the digital landscape and strategies to protect your online presence.</p>
-                            <button class="btn read-more" data-id="9">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?robotics')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Robotics and Automation</h3>
-                            <p class="blog-excerpt">Discover how robots and automation are transforming industries and reshaping the future of work.</p>
-                            <button class="btn read-more" data-id="10">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?blockchain')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Blockchain Beyond Cryptocurrency</h3>
-                            <p class="blog-excerpt">Explore the diverse applications of blockchain technology in various industries beyond digital currencies.</p>
-                            <button class="btn read-more" data-id="11">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?3d-printing')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">3D Printing Revolution</h3>
-                            <p class="blog-excerpt">Learn how 3D printing is changing manufacturing, medicine, and even space exploration.</p>
-                            <button class="btn read-more" data-id="12">Read More</button>
-                        </div>
-                    </div>
-                    <div class="blog-card fade-in">
-                        <div class="blog-image" style="background-image: url('https://source.unsplash.com/random/400x200?nanotechnology')"></div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Nanotechnology Breakthroughs</h3>
-                            <p class="blog-excerpt">Discover the latest advancements in nanotechnology and their potential to revolutionize various fields.</p>
-                            <button class="btn read-more" data-id="13">Read More</button>
-                        </div>
-                    </div>
+                    
+<div class="blog-card slide-in">
+    <div class="blog-image" style="background-image: url('ai_tools.jpg');"></div>
+    <div class="blog-content">
+        <p class="blog-date">January 07, 2025</p>
+        <h3 class="blog-title">Artificial Intelligence Tools: Revolutionizing 2025</h3>
+        <p class="blog-excerpt">Explore how AI tools have transformed industries and daily life in 2025, from advanced chatbots to creative applications.</p>
+        <a href="#" class="btn read-more" data-id="1">Read More</a>
+    </div>
+</div>
+<div class="blog-card slide-in">
+    <div class="blog-image" style="background-image: url('electric_vehicles.jpg');"></div>
+    <div class="blog-content">
+        <p class="blog-date">January 08, 2025</p>
+        <h3 class="blog-title">Electric Vehicles: Driving the Future Forward</h3>
+        <p class="blog-excerpt">An in-depth look at the surge of electric vehicles in 2025, highlighting new models, technological advancements, and market trends.</p>
+        <a href="#" class="btn read-more" data-id="2">Read More</a>
+    </div>
+</div>
+<div class="blog-card slide-in">
+    <div class="blog-image" style="background-image: url('climate_change.jpg');"></div>
+    <div class="blog-content">
+        <p class="blog-date">January 08, 2025</p>
+        <h3 class="blog-title">Climate Change and Natural Disasters: 2025 in Review</h3>
+        <p class="blog-excerpt">Analyzing the impact of climate change in 2025, including major natural disasters and global responses to environmental challenges.</p>
+        <a href="#" class="btn read-more" data-id="3">Read More</a>
+    </div>
+</div>
+<div class="blog-card slide-in">
+    <div class="blog-image" style="background-image: url('cryptocurrency.jpg');"></div>
+    <div class="blog-content">
+        <p class="blog-date">January 09, 2025</p>
+        <h3 class="blog-title">Cryptocurrency and Blockchain: The 2025 Landscape</h3>
+        <p class="blog-excerpt">Delving into the developments in cryptocurrency and blockchain technology in 2025, including market trends and regulatory changes.</p>
+        <a href="#" class="btn read-more" data-id="4">Read More</a>
+    </div>
+</div>
+<div class="blog-card slide-in">
+    <div class="blog-image" style="background-image: url('health_wellness.jpg');"></div>
+    <div class="blog-content">
+        <p class="blog-date">January 10, 2025</p>
+        <h3 class="blog-title">Health and Wellness Trends in 2025</h3>
+        <p class="blog-excerpt">A comprehensive guide to the top health and wellness trends of 2025, from plant-based diets to mental health innovations.</p>
+        <a href="#" class="btn read-more" data-id="5">Read More</a>
+    </div>
+</div>
+
                 </div>
             </div>
         </section>
 
         <section id="about" class="about">
             <div class="container">
-                <h2 class="animate">About Us</h2>
-                <p class="animate">We are passionate about sharing knowledge and inspiring our readers. Our team of expert writers covers a wide range of topics to keep you informed and entertained.</p>
-                <p class="animate">Join us on this journey of discovery and learning!</p>
+                <h2>About Us</h2>
+                <p>We are passionate about sharing knowledge and inspiring our readers. Our team of expert writers covers a wide range of topics to keep you informed and entertained.</p>
+                <p>Join us on this journey of discovery and learning!</p>
             </div>
         </section>
 
         <section id="contact" class="contact">
             <div class="container">
-                <h2 class="animate">Contact Us</h2>
-                <p class="animate">Have a question or suggestion? We'd love to hear from you!</p>
+                <h2>Contact Us</h2>
+                <p>Have a question or suggestion? We'd love to hear from you!</p>
                 <form id="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -574,15 +679,16 @@
                 </form>
             </div>
         </section>
+
         <section id="visit" class="visit">
             <div class="container">
-                <h2 class="animate">Visit us on</h2>
+                <h2>Visit us on</h2>
                 <div class="social-links">
-                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="email"><i class="far fa-envelope"></i></a>
+                    <a href="#" class="facebook highlight-effect" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="twitter highlight-effect" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="instagram highlight-effect" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="whatsapp highlight-effect" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="email highlight-effect"><i class="far fa-envelope"></i></a>
                 </div>
             </div>
         </section>
@@ -595,262 +701,161 @@
     <div id="blogModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
+            <img id="modalImage" src="/placeholder.svg" alt="Blog post image" class="modal-image">
             <h2 id="modalTitle"></h2>
             <div id="modalContent"></div>
         </div>
     </div>
 
+    <div id="privacyModal" class="modal">
+        <div id="privacyContent">
+                <p>
+
+Effective Date: January 26, 2025
+
+At Manju Blogs, accessible from manjudevimukhiya.com.np, one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information that is collected and recorded by Manju Blogs and how we use it.
+
+1. Information We Collect
+
+We collect personal information from users when they subscribe to our newsletter, leave comments, or interact with our website. The information may include:
+
+Personal Identification Information: Name, email address, and other details provided by users.
+
+Non-Personal Identification Information: Log data such as IP address, browser type, and usage patterns on the site.
+
+
+2. How We Use Your Information
+
+The information we collect is used in the following ways:
+
+To personalize user experience and respond to inquiries or requests.
+
+To send periodic emails, updates, or newsletters.
+
+To analyze site traffic and improve website functionality and content.
+
+
+3. Cookies
+
+Our website uses cookies to enhance user experience. Cookies are small files stored on your device that help us understand user behavior and preferences. You can choose to disable cookies through your browser settings, but this may impact the functionality of certain features on the website.
+
+4. Third-Party Links
+
+Our website may include links to third-party websites, advertisements, or services that are not operated by us. We are not responsible for the content, privacy policies, or practices of any third-party sites.
+
+5. Data Security
+
+We take appropriate measures to protect your personal data, using security protocols and technologies. However, please note that no method of transmission over the internet or electronic storage is 100% secure.
+
+6. Your Rights
+
+You have the right to access, correct, or request deletion of your personal information. If you wish to exercise these rights or have any concerns, please contact us at manjumukhiyaofficial@gmail.com.
+
+7. Changes to This Privacy Policy
+
+We reserve the right to update or change this Privacy Policy at any time. When changes are made, the "Effective Date" at the top of the page will be updated. We encourage users to check this page periodically for any updates.
+
+8. Contact Us
+
+If you have any questions about this Privacy Policy, please contact us at manjumukhiyaofficial@gmail.com.
+
+</p>
+                <!-- Add more privacy policy content here -->
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('blogModal');
+            const blogModal = document.getElementById('blogModal');
+            const privacyModal = document.getElementById('privacyModal');
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
-            const closeBtn = document.getElementsByClassName('close')[0];
+            const modalImage = document.getElementById('modalImage');
+            const closeBtns = document.getElementsByClassName('close');
             const menuToggle = document.getElementById('menuToggle');
             const menu = document.getElementById('menu');
+            const menuIcon = menuToggle.querySelector('i');
 
             const blogPosts = {
                 1: {
-                    title: "The Future of AI",
-                    content: `
-                        <p>Artificial Intelligence (AI) is rapidly evolving and shaping our world in ways we never imagined. From self-driving cars to advanced medical diagnostics, AI is revolutionizing various industries and aspects of our daily lives.</p>
-                        <h3>Key Areas of AI Development</h3>
-                        <ul>
-                            <li>Machine Learning and Deep Learning</li>
-                            <li>Natural Language Processing</li>
-                            <li>Computer Vision</li>
-                            <li>Robotics</li>
-                        </ul>
-                        <p>As AI continues to advance, we can expect to see more personalized experiences, improved efficiency in various sectors, and solutions to complex global challenges. However, it's crucial to address ethical considerations and ensure that AI development benefits humanity as a whole.</p>
-                        <p>The future of AI is bright and full of possibilities. It's an exciting time to be alive and witness these groundbreaking advancements firsthand.</p>
-                    `
+                    title: "Quantum Computing Breakthrough",
+                    content: "<p>In a groundbreaking development, researchers have achieved a major milestone in quantum computing. This breakthrough promises to revolutionize data processing and encryption, potentially solving complex problems that are currently intractable for classical computers.</p><p>The implications of this advancement span across various fields, including cryptography, drug discovery, and financial modeling. As quantum computers become more powerful and reliable, we can expect to see transformative changes in industries ranging from cybersecurity to materials science.</p>",
+                    image: "/placeholder.svg?height=400&width=600"
                 },
                 2: {
-                    title: "Sustainable Living",
-                    content: `
-                        <p>Sustainable living is becoming increasingly important as we face environmental challenges such as climate change, pollution, and resource depletion. By making conscious choices in our daily lives, we can reduce our environmental impact and contribute to a healthier planet.</p>
-                        <h3>Tips for Sustainable Living</h3>
-                        <ol>
-                            <li>Reduce, Reuse, Recycle: Minimize waste by choosing reusable items and properly recycling.</li>
-                            <li>Conserve Energy: Use energy-efficient appliances and turn off lights when not in use.</li>
-                            <li>Eat Sustainably: Choose locally sourced, organic foods and reduce meat consumption.</li>
-                            <li>Use Eco-friendly Transportation: Walk, bike, or use public transport when possible.</li>
-                            <li>Support Sustainable Brands: Choose products from companies committed to sustainability.</li>
-                        </ol>
-                        <p>Remember, small changes in our daily habits can make a big difference when it comes to sustainable living. Every action counts towards creating a more sustainable future for generations to come.</p>
-                    `
+                    title: "AI in Healthcare: A New Era",
+                    content: "<p>Artificial Intelligence is ushering in a new era of healthcare, transforming everything from medical diagnoses to treatment plans. Machine learning algorithms are now capable of analyzing vast amounts of medical data with unprecedented speed and accuracy, leading to earlier disease detection and more personalized treatment strategies.</p><p>From AI-powered radiology tools that can detect subtle abnormalities in medical images to virtual nursing assistants that provide round-the-clock patient monitoring, the integration of AI in healthcare is improving patient outcomes and reducing the burden on healthcare systems worldwide.</p>",
+                    image: "/placeholder.svg?height=400&width=600"
                 },
                 3: {
-                    title: "Mindfulness and Well-being",
-                    content: `
-                        <p>In today's fast-paced world, practicing mindfulness has become essential for maintaining our mental health and overall well-being. Mindfulness is the practice of being fully present and aware of our thoughts, feelings, and surroundings without judgment.</p>
-                        <h3>Benefits of Mindfulness</h3>
-                        <ul>
-                            <li>Reduced stress and anxiety</li>
-                            <li>Improved focus and concentration</li>
-                            <li>Enhanced emotional regulation</li>
-                            <li>Better sleep quality</li>
-                            <li>Increased self-awareness</li>
-                        </ul>
-                        <p>Incorporating mindfulness into your daily routine doesn't have to be complicated. Here are some simple ways to get started:</p>
-                        <ol>
-                            <li>Practice deep breathing exercises</li>
-                            <li>Try meditation for a few minutes each day</li>
-                            <li>Engage in mindful eating by savoring each bite</li>
-                            <li>Take mindful walks and observe your surroundings</li>
-                            <li>Use mindfulness apps for guided exercises</li>
-                        </ol>
-                        <p>By cultivating mindfulness, you can improve your overall well-being and lead a more balanced, fulfilling life. Remember, it's a journey, so be patient and kind to yourself as you develop this valuable skill.</p>
-                    `
-                },
-                4: {
-                    title: "Quantum Computing Revolution",
-                    content: `
-                        <p>Quantum computing is poised to revolutionize the world of technology and problem-solving. Unlike classical computers that use bits, quantum computers use quantum bits or qubits, which can exist in multiple states simultaneously.</p>
-                        <h3>Potential Applications of Quantum Computing</h3>
-                        <ul>
-                            <li>Cryptography and cybersecurity</li>
-                            <li>Drug discovery and development</li>
-                            <li>Financial modeling and risk assessment</li>
-                            <li>Climate modeling and weather prediction</li>
-                            <li>Optimization of complex systems</li>
-                        </ul>
-                        <p>As quantum computers become more powerful and accessible, we can expect breakthroughs in fields that were previously limited by classical computing power. However, there are still many challenges to overcome, including error correction and scalability.</p>
-                        <p>The quantum computing revolution is just beginning, and its full potential is yet to be realized. Stay tuned for exciting developments in this rapidly evolving field.</p>
-                    `
-                },
-                5: {
-                    title: "New Frontiers in Space Exploration",
-                    content: `
-                        <p>Space exploration is entering a new era, with both government agencies and private companies pushing the boundaries of what's possible. From Mars missions to asteroid mining, the future of space exploration is more exciting than ever.</p>
-                        <h3>Key Areas of Space Exploration</h3>
-                        <ul>
-                            <li>Mars colonization efforts</li>
-                            <li>Lunar bases and resource utilization</li>
-                            <li>Asteroid mining and resource extraction</li>
-                            <li>Deep space exploration and interstellar travel</li>
-                            <li>Search for extraterrestrial life</li>
-                        </ul>
-                        <p>Advancements in rocket technology, such as reusable launchers, are making space more accessible than ever before. Meanwhile, new propulsion technologies like ion drives and solar sails are being developed for long-distance space travel.</p>
-                        <p>As we continue to explore the cosmos, we not only expand our scientific knowledge but also inspire future generations to push the boundaries of human achievement.</p>
-                    `
-                },
-                6: {
-                    title: "Renewable Energy Breakthroughs",
-                    content: `
-                        <p>The transition to renewable energy sources is crucial for combating climate change and ensuring a sustainable future. Recent breakthroughs in renewable energy technology are making clean energy more efficient, affordable, and accessible.</p>
-                        <h3>Exciting Developments in Renewable Energy</h3>
-                        <ul>
-                            <li>Perovskite solar cells with record-breaking efficiency</li>
-                            <li>Floating offshore wind farms</li>
-                            <li>Advanced energy storage solutions, including solid-state batteries</li>
-                            <li>Green hydrogen production and utilization</li>
-                            <li>Tidal and wave energy harvesting technologies</li>
-                        </ul>
-                        <p>These innovations are not only helping to reduce our carbon footprint but also creating new economic opportunities and jobs in the green energy sector. As renewable energy technologies continue to improve and costs decrease, we can expect to see a rapid transition away from fossil fuels.</p>
-                        <p>The renewable energy revolution is well underway, and it's an exciting time to be part of this transformative journey towards a cleaner, more sustainable world.</p>
-                    `
-                },
-                7: {
-                    title: "Advancements in Biotechnology",
-                    content: `
-                        <p>Biotechnology is rapidly advancing, offering groundbreaking solutions in medicine, agriculture, and environmental conservation. From gene editing to synthetic biology, these innovations are reshaping our world.</p>
-                        <h3>Key Areas of Biotechnology Innovation</h3>
-                        <ul>
-                            <li>CRISPR gene editing and personalized medicine</li>
-                            <li>Synthetic biology and lab-grown organs</li>
-                            <li>Bioremediation for environmental cleanup</li>
-                            <li>Genetically modified crops for improved yield and nutrition</li>
-                            <li>Biofuels and sustainable materials</li>
-                        </ul>
-                        <p>These advancements hold the potential to cure genetic diseases, create more sustainable and nutritious food sources, and develop eco-friendly materials and fuels. However, they also raise important ethical questions that society must address.</p>
-                        <p>As biotechnology continues to evolve, it will play an increasingly important role in solving global challenges and improving quality of life for people around the world.</p>
-                    `
-                },
-                8: {
-                    title: "The Future of Virtual Reality",
-                    content: `
-                        <p>Virtual Reality (VR) technology is rapidly evolving, offering immersive experiences that blur the line between the digital and physical worlds. From entertainment to education and professional training, VR is transforming various aspects of our lives.</p>
-                        <h3>Exciting Applications of VR Technology</h3>
-                        <ul>
-                            <li>Immersive gaming and entertainment experiences</li>
-                            <li>Virtual classrooms and interactive learning environments</li>
-                            <li>Medical training and surgical simulations</li>
-                            <li>Virtual tourism and cultural experiences</li>
-                            <li>Remote collaboration and virtual offices</li>
-                        </ul>
-                        <p>As VR hardware becomes more affordable and user-friendly, we can expect to see wider adoption across industries. The integration of haptic feedback and advanced motion tracking is making VR experiences increasingly realistic and engaging.</p>
-                        <p>The future of VR is bright, with potential applications we have yet to imagine. As the technology continues to advance, we can expect VR to become an integral part of our daily lives, revolutionizing how we work, learn, and interact with the world around us.</p>
-                    `
-                },
-                9: {
-                    title: "Cybersecurity in the Digital Age",
-                    content: `
-                        <p>As our world becomes increasingly digital, the importance of cybersecurity cannot be overstated. With cyber threats evolving rapidly, individuals and organizations must stay vigilant to protect their digital assets and privacy.</p>
-                        <h3>Key Cybersecurity Trends</h3>
-                        <ul>
-                            <li>Artificial Intelligence and Machine Learning in threat detection</li>
-                            <li>Zero Trust Security models</li>
-                            <li>Cloud security and data protection</li>
-                            <li>Internet of Things (IoT) security challenges</li>
-                            <li>Quantum-resistant cryptography</li>
-                        </ul>
-                        <p>As cyber attacks become moresophisticated, cybersecurity professionals are developing innovative solutions to stay ahead of threats. This includes leveraging AI for real-time threat detection, implementing multi-factor authentication, and educating users about best practices for online safety.</p>
-                        <p>In this digital age, cybersecurity is everyone's responsibility. By stayinginformed and implementing robust security measures, we can create a safer digital world for all.</p>
-                    `
-                },
-                10: {
-                    title: "Robotics and Automation",
-                    content: `
-                        <p>Robotics and automation are revolutionizing industries across the globe, from manufacturing and healthcare to agriculture and space exploration. These technologies are enhancing productivity, improving safety, and opening up new possibilities in various fields.</p>
-                        <h3>Exciting Developments in Robotics</h3>
-                        <ul>
-                            <li>Collaborative robots (cobots) working alongside humans</li>
-                            <li>Autonomous vehicles and drones</li>
-                            <li>Robotic surgery and medical assistance</li>
-                            <li>Agricultural robots for precision farming</li>
-                            <li>Soft robotics for delicate operations</li>
-                        </ul>
-                        <p>As robots become more advanced and capable of performing complex tasks, they are reshaping the workforce and creating new job opportunities in robot design, programming, and maintenance. However, this shift also raises important questions about the future of work and the need for reskilling and upskilling.</p>
-                        <p>The field of robotics continues to evolve rapidly, promising exciting advancements that will further transform our world in the coming years.</p>
-                    `
-                },
-                11: {
-                    title: "Blockchain Beyond Cryptocurrency",
-                    content: `
-                        <p>While blockchain technology is best known for its role in cryptocurrencies like Bitcoin, its potential applications extend far beyond digital currencies. This decentralized and transparent technology is finding innovative uses across various industries.</p>
-                        <h3>Promising Applications of Blockchain</h3>
-                        <ul>
-                            <li>Supply chain management and traceability</li>
-                            <li>Secure voting systems</li>
-                            <li>Decentralized finance (DeFi) platforms</li>
-                            <li>Digital identity verification</li>
-                            <li>Intellectual property protection</li>
-                        </ul>
-                        <p>Blockchain's ability to create immutable, transparent records makes it valuable in areas where trust and verification are crucial. From ensuring the authenticity of luxury goods to streamlining cross-border payments, blockchain is revolutionizing how we handle and verify information.</p>
-                        <p>As the technology matures and becomes more scalable, we can expect to see even more innovative applications of blockchain across various sectors, potentially reshaping entire industries.</p>
-                    `
-                },
-                12: {
-                    title: "3D Printing Revolution",
-                    content: `
-                        <p>3D printing, also known as additive manufacturing, is transforming the way we design, produce, and distribute physical objects. This technology is finding applications in diverse fields, from manufacturing and medicine to architecture and space exploration.</p>
-                        <h3>Innovative Uses of 3D Printing</h3>
-                        <ul>
-                            <li>Customized medical implants and prosthetics</li>
-                            <li>Rapid prototyping in product development</li>
-                            <li>On-demand manufacturing of spare parts</li>
-                            <li>3D-printed buildings and construction</li>
-                            <li>Bioprinting of tissues and organs</li>
-                        </ul>
-                        <p>3D printing is enabling greater customization, reducing waste in manufacturing, and allowing for the creation of complex geometries that were previously impossible or impractical to produce. As the technology advances, we're seeing faster printing speeds, a wider range of printable materials, and larger printing volumes.</p>
-                        <p>The 3D printing revolution is just beginning, and its potential to disrupt traditional manufacturing and enable new possibilities is truly exciting.</p>
-                    `
-                },
-                13: {
-                    title: "Nanotechnology Breakthroughs",
-                    content: `
-                        <p>Nanotechnology, the manipulation of matter at the atomic and molecular scale, is making significant strides across various fields. These tiny innovations are leading to big breakthroughs in medicine, materials science, energy, and more.</p>
-                        <h3>Exciting Developments in Nanotechnology</h3>
-                        <ul>
-                            <li>Targeted drug delivery systems</li>
-                            <li>Self-healing materials</li>
-                            <li>Nanoelectronics for faster, more efficient computing</li>
-                            <li>Nanoscale sensors for environmental monitoring</li>
-                            <li>Nanotech-enhanced renewable energy systems</li>
-                        </ul>
-                        <p>Nanotechnology is enabling us to create materials with unprecedented properties, develop more effective medical treatments, and push the boundaries of what's possible in electronics and energy production. As our ability to manipulate matter at the nanoscale improves, we can expect to see even more groundbreaking applications of this technology.</p>
-                        <p>The field of nanotechnology is rapidly evolving, promising to revolutionize numerous aspects of our lives in the coming years.</p>
-                    `
+                    title: "Sustainable Energy Revolution",
+                    content: "<p>The world is witnessing a sustainable energy revolution as breakthroughs in renewable energy technologies pave the way for a cleaner, greener future. Innovations in solar panel efficiency, wind turbine design, and energy storage solutions are making renewable energy more accessible and affordable than ever before.</p><p>Countries around the globe are setting ambitious targets for carbon neutrality, driving investment and research into sustainable energy solutions. From floating solar farms to advanced geothermal systems, these technologies are not only addressing climate change but also creating new economic opportunities in the green energy sector.</p>",
+                    image: "/placeholder.svg?height=400&width=600"
                 }
+                // Add more blog posts here...
             };
 
             document.querySelectorAll('.read-more').forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
                     const postId = this.getAttribute('data-id');
                     const post = blogPosts[postId];
-                    modalTitle.textContent = post.title;
-                    modalContent.innerHTML = post.content;
-                    modal.style.display = 'block';
+                    if (post) {
+                        modalTitle.textContent = post.title;
+                        modalContent.innerHTML = post.content;
+                        modalImage.src = post.image;
+                        modalImage.alt = post.title;
+                        blogModal.style.display = 'block';
+                    } else {
+                        console.error('Blog post not found');
+                    }
                 });
             });
 
-            closeBtn.onclick = function() {
-                modal.style.display = 'none';
-            }
+            document.getElementById('privacy-policy').addEventListener('click', function(e) {
+                e.preventDefault();
+                privacyModal.style.display = 'block';
+            });
+
+            Array.from(closeBtns).forEach(btn => {
+                btn.onclick = function() {
+                    blogModal.style.display = 'none';
+                    privacyModal.style.display = 'none';
+                }
+            });
 
             window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
+                if (event.target == blogModal) {
+                    blogModal.style.display = 'none';
                 }
-                if (menu.classList.contains('show')) {
-                    menu.classList.remove('show');
+                if (event.target == privacyModal) {
+                    privacyModal.style.display = 'none';
                 }
+            }
+
+            function toggleMenu() {
+                menu.classList.toggle('show');
+                menuToggle.classList.toggle('active');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
             }
 
             menuToggle.addEventListener('click', function(e) {
                 e.stopPropagation();
-                menu.classList.toggle('show');
+                toggleMenu();
+            });
+
+            document.addEventListener('click', function(e) {
+                const isClickInsideMenu = menu.contains(e.target);
+                const isClickOnMenuToggle = menuToggle.contains(e.target);
+                
+                if (!isClickInsideMenu && !isClickOnMenuToggle) {
+                    menu.classList.remove('show');
+                    menuToggle.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
             });
 
             const contactForm = document.getElementById('contact-form');
@@ -862,19 +867,21 @@
 
             function isElementInViewport(el) {
                 const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
                 return (
-                    rect.top >= 0 &&
+                    rect.top <= windowHeight * 0.75 &&
+                    rect.bottom >= 0 &&
                     rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
                     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
                 );
             }
 
             function handleScrollAnimation() {
-                const elements = document.querySelectorAll('.blog-card, .about h2, .about p, .contact h2, .contact p, .visit h2');
+                const elements = document.querySelectorAll('.blog-card, .about, .contact, .visit');
                 elements.forEach(el => {
                     if (isElementInViewport(el)) {
-                        el.classList.add('animate');
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
                     }
                 });
             }
@@ -883,37 +890,32 @@
             window.addEventListener('resize', handleScrollAnimation);
             handleScrollAnimation();
 
-            // Handle active navigation
-            const navLinks = document.querySelectorAll('nav ul li a');
-            const sections = document.querySelectorAll('main > section');
+            const navLinks = document.querySelectorAll('nav ul li a:not([href="#visit"])');
+            const sections = document.querySelectorAll('main > section:not(#visit)');
 
             function setActiveLink() {
                 let index = sections.length;
 
                 while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
-    
-                navLinks.forEach((link) => {
-                    link.classList.remove('active');
-                    link.style.color = '#fff';
-                });
-                navLinks[index].classList.add('active');
-                navLinks[index].style.color = '#000';
 
-                // Update menu icon color
-                if (navLinks[index].classList.contains('active')) {
-                    menuToggle.style.color = '#000';
-                } else {
-                    menuToggle.style.color = '#fff';
-                }
+                navLinks.forEach((link) => link.classList.remove('active'));
+                navLinks[index].classList.add('active');
             }
 
             setActiveLink();
             window.addEventListener('scroll', setActiveLink);
 
-            document.querySelector('a[href="#visit"]').addEventListener('click', function() {
-                this.classList.add('active');
-                this.style.color = '#000';
-                menuToggle.style.color = '#000';
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    if (window.innerWidth <= 768) {
+                        menu.classList.remove('show');
+                        menuToggle.classList.remove('active');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                });
             });
         });
     </script>
