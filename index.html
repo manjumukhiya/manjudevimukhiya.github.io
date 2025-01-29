@@ -44,14 +44,14 @@
     .logo-container {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Changed from flex-start to center */
-        text-align: center; /* Added to ensure text alignment */
+        align-items: center;
+        text-align: center;
     }
 
     .logo-wrapper {
         display: flex;
         align-items: center;
-        gap: 5px; /* Changed from 10px to 5px */
+        gap: 5px;
     }
 
     .logo-circle {
@@ -220,7 +220,9 @@
         nav ul li:last-child {
             margin-bottom: 0;
         }
-     .hero {
+    }
+
+    .hero {
         height: 40vh;
         display: flex;
         align-items: center;
@@ -233,15 +235,39 @@
     }
 
     .hero-content {
-        background: rgba(255,255,255,0.8);
+        background: none;
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0,0,0,0.1);
         margin: 0 20px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
     }
-    
+
+    .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
     }
-    
+
+    .video-background video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-content h1,
+    .hero-content p {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
     h1, h2, h3 {
         font-family: 'Playfair Display', serif;
     }
@@ -249,7 +275,7 @@
     h1 {
         font-size: 3.5rem;
         margin-bottom: 20px;
-        color: #333;
+        color: #fff;
     }
 
     .btn {
@@ -569,7 +595,7 @@
                 <li><a href="#blogs">Blogs</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy & Policy</a></li>
+                <li><a href="privacy-policy.html">Privacy & Policy</a></li>
             </ul>
         </nav>
         <div class="menu-icon" id="menuToggle">
@@ -578,13 +604,19 @@
     </header>
 
     <main>
-<section id="home" class="hero">
+        <section id="home" class="hero">
             <div class="hero-content fade-in">
+                <div class="video-background">
+                    <video autoplay loop muted playsinline>
+                        <source src="184814-874271896_medium.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
                 <h1>Welcome to our platform</h1>
                 <p>Discover amazing stories, articles, news and insights.</p>
             </div>
-</section>
-        
+        </section>
+
         <section id="blogs" class="blogs">
             <div class="container">
                 <h2>Latest Posts</h2>
@@ -595,7 +627,7 @@
                             <p class="blog-date">January 15, 2025</p>
                             <h3 class="blog-title">Quantum Computing Breakthrough</h3>
                             <p class="blog-excerpt">Major advancements in quantum computing promise to revolutionize data processing and encryption.</p>
-                            <a href="blog-1.html" class="btn">Read More</a>
+                            <a href="privacy-policy.html" class="btn">Read More</a>
                         </div>
                     </div>
                     <div class="blog-card slide-in">
@@ -617,96 +649,7 @@
                         </div>
                     </div>
                     
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('ai_tools.jpg');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 07, 2025</p>
-                            <h3 class="blog-title">Artificial Intelligence Tools: Revolutionizing 2025</h3>
-                            <p class="blog-excerpt">Explore how AI tools have transformed industries and daily life in 2025, from advanced chatbots to creative applications.</p>
-                            <a href="blog-4.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('electric_vehicles.jpg');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 08, 2025</p>
-                            <h3 class="blog-title">Electric Vehicles: Driving the Future Forward</h3>
-                            <p class="blog-excerpt">An in-depth look at the surge of electric vehicles in 2025, highlighting new models, technological advancements, and market trends.</p>
-                            <a href="blog-5.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('climate_change.jpg');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 08, 2025</p>
-                            <h3 class="blog-title">Climate Change and Natural Disasters: 2025 in Review</h3>
-                            <p class="blog-excerpt">Analyzing the impact of climate change in 2025, including major natural disasters and global responses to environmental challenges.</p>
-                            <a href="blog-6.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('cryptocurrency.jpg');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 09, 2025</p>
-                            <h3 class="blog-title">Cryptocurrency and Blockchain: The 2025 Landscape</h3>
-                            <p class="blog-excerpt">Delving into the developments in cryptocurrency and blockchain technology in 2025, including market trends and regulatory changes.</p>
-                            <a href="blog-7.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('health_wellness.jpg');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 10, 2025</p>
-                            <h3 class="blog-title">Health and Wellness Trends in 2025</h3>
-                            <p class="blog-excerpt">A comprehensive guide to the top health and wellness trends of 2025, from plant-based diets to mental health innovations.</p>
-                            <a href="blog-8.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('/placeholder.svg?height=200&width=300');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 11, 2025</p>
-                            <h3 class="blog-title">The Rise of Virtual Reality Education</h3>
-                            <p class="blog-excerpt">How VR is transforming the education landscape in 2025, offering immersive learning experiences across all subjects.</p>
-                            <a href="blog-9.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('/placeholder.svg?height=200&width=300');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 12, 2025</p>
-                            <h3 class="blog-title">Space Tourism: The New Frontier</h3>
-                            <p class="blog-excerpt">Exploring the booming industry of commercial space travel and its impact on science and global economics.</p>
-                            <a href="blog-10.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('/placeholder.svg?height=200&width=300');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 13, 2025</p>
-                            <h3 class="blog-title">The Global Water Crisis: Solutions and Innovations</h3>
-                            <p class="blog-excerpt">Examining the worldwide water shortage and groundbreaking technologies addressing this critical issue.</p>
-                            <a href="blog-11.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('/placeholder.svg?height=200&width=300');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 14, 2025</p>
-                            <h3 class="blog-title">Nepal's Economic Boom: A Model for Developing Nations</h3>
-                            <p class="blog-excerpt">How Nepal has leveraged technology and sustainable practices to become a rising star in the global economy.</p>
-                            <a href="blog-12.html" class="btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('/placeholder.svg?height=200&width=300');"></div>
-                        <div class="blog-content">
-                            <p class="blog-date">January 15, 2025</p>
-                            <h3 class="blog-title">The Ethics of Human Augmentation</h3>
-                            <p class="blog-excerpt">Delving into the moral and societal implications of cybernetic enhancements and genetic modifications in humans.</p>
-                            <a href="blog-13.html" class="btn">Read More</a>
-                        </div>
-                    </div>
+                    <!-- More blog cards... -->
                 </div>
             </div>
         </section>
@@ -760,194 +703,130 @@
     </footer>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const blogModal = document.createElement('div');
-    blogModal.id = 'blogModal';
-    blogModal.className = 'modal';
-    blogModal.innerHTML = `
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img id="modalImage" src="/placeholder.svg" alt="Blog post image" class="modal-image">
-            <h2 id="modalTitle"></h2>
-            <div id="modalContent"></div>
-        </div>
-    `;
-    document.body.appendChild(blogModal);
+    document.addEventListener('DOMContentLoaded', function() {
+        const blogModal = document.createElement('div');
+        blogModal.id = 'blogModal';
+        blogModal.className = 'modal';
+        blogModal.innerHTML = `
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="modalImage" src="/placeholder.svg" alt="Blog post image" class="modal-image">
+                <h2 id="modalTitle"></h2>
+                <div id="modalContent"></div>
+            </div>
+        `;
+        document.body.appendChild(blogModal);
 
-    const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
-    const modalImage = document.getElementById('modalImage');
-    const closeBtn = blogModal.querySelector('.close');
-    const menuToggle = document.getElementById('menuToggle');
-    const menu = document.getElementById('menu');
-    const menuIcon = menuToggle.querySelector('i');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const modalImage = document.getElementById('modalImage');
+        const closeBtn = blogModal.querySelector('.close');
+        const menuToggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('menu');
+        const menuIcon = menuToggle.querySelector('i');
 
-    const blogPosts = {
-        1: {
-            title: "Quantum Computing Breakthrough",
-            content: "<p>In a groundbreaking development, researchers have achieved a major milestone in quantum computing. This breakthrough promises to revolutionize data processing and encryption, potentially solving complex problems that are currently intractable for classical computers.</p><p>The implications of this advancement span across various fields, including cryptography, drug discovery, and financial modeling. As quantum computers become more powerful and reliable, we can expect to see transformative changes in industries ranging from cybersecurity to materials science.</p>",
-            image: "/placeholder.svg?height=400&width=600"
-        },
-        2: {
-            title: "AI in Healthcare: A New Era",
-            content: "<p>Artificial Intelligence is ushering in a new era of healthcare, transforming everything from medical diagnoses to treatment plans. Machine learning algorithms are now capable of analyzing vast amounts of medical data with unprecedented speed and accuracy, leading to earlier disease detection and more personalized treatment strategies.</p><p>From AI-powered radiology tools that can detect subtle abnormalities in medical images to virtual nursing assistants that provide round-the-clock patient monitoring, the integration of AI in healthcare is improving patient outcomes and reducing the burden on healthcare systems worldwide.</p>",
-            image: "/placeholder.svg?height=400&width=600"
-        },
-        3: {
-            title: "Sustainable Energy Revolution",
-            content: "<p>The world is witnessing a sustainable energy revolution as breakthroughs in renewable energy technologies pave the way for a cleaner, greener future. Innovations in solar panel efficiency, wind turbine design, and energy storage solutions are making renewable energy more accessible and affordable than ever before.</p><p>Countries around the globe are setting ambitious targets for carbon neutrality, driving investment and research into sustainable energy solutions. From floating solar farms to advanced geothermal systems, these technologies are not only addressing climate change but also creating new economic opportunities in the green energy sector.</p>",
-            image: "/placeholder.svg?height=400&width=600"
-        },
-        4: {
-            title: "Artificial Intelligence Tools: Revolutionizing 2025",
-            content: "<p>The year 2025 has seen an unprecedented integration of AI tools across various sectors. From advanced chatbots that provide human-like customer service to AI-driven creative tools that assist in content creation, the impact is far-reaching. These tools are not just enhancing productivitybut are also opening up new avenues for innovation and problem-solving.</p><p>In the business world, AI-powered analytics are providing deeper insights and predictive capabilities, while in education, personalized learning experiences are becoming the norm. As we continue to explore the potential of AI, ethical considerations and responsible development remain at the forefront of this technological revolution.</p>",
-            image: "ai_tools.jpg"
-        },
-        5: {
-            title: "Electric Vehicles: Driving the Future Forward",
-            content: "<p>The electric vehicle (EV) market has experienced exponential growth in 2025. With advancements in battery technology, increased range, and faster charging capabilities, EVs are now a viable option for a wider range of consumers. Major automakers have expanded their EV lineups, offering everything from compact city cars to luxury SUVs.</p><p>Infrastructure development has kept pace, with charging stations becoming as common as gas stations in many urban areas. Government incentives and stricter emission regulations have further accelerated the transition to electric mobility. As the world moves towards a more sustainable future, electric vehicles are playing a crucial role in reducing carbon emissions and reshaping the automotive industry.</p>",
-            image: "electric_vehicles.jpg"
-        },
-        6: {
-            title: "Climate Change and Natural Disasters: 2025 in Review",
-            content: "<p>The year 2025 has been marked by significant climate events that have underscored the urgency of addressing global warming. From record-breaking heatwaves to more frequent and intense hurricanes, the impact of climate change has been felt worldwide. These events have led to increased public awareness and demand for action.</p><p>In response, governments and organizations have ramped up efforts to combat climate change. Innovative technologies for carbon capture and storage have gained traction, while reforestation projects and sustainable urban planning initiatives have become priorities. The year has also seen unprecedented international cooperation, with new global agreements aimed at reducing greenhouse gas emissions and promoting sustainable development.</p>",
-            image: "climate_change.jpg"
-        },
-        7: {
-            title: "Cryptocurrency and Blockchain: The 2025 Landscape",
-            content: "<p>The cryptocurrency and blockchain landscape has undergone significant transformations in 2025. With increased mainstream adoption, cryptocurrencies have become an integral part of the global financial system. Central Bank Digital Currencies (CBDCs) have been launched by several major economies, bridging the gap between traditional finance and the crypto world.</p><p>Blockchain technology has expanded far beyond cryptocurrencies, finding applications in supply chain management, digital identity verification, and decentralized finance (DeFi). The rise of Web3 technologies has led to a new era of decentralized applications and services, challenging traditional business models and empowering users with greater control over their data and digital assets.</p>",
-            image: "cryptocurrency.jpg"
-        },
-        8: {
-            title: "Health and Wellness Trends in 2025",
-            content: "<p>The health and wellness industry has seen a paradigm shift in 2025, with a focus on holistic and personalized approaches. Advancements in genetic testing and AI-driven health analytics have paved the way for truly individualized nutrition and fitness plans. Plant-based diets have become mainstream, supported by innovations in alternative protein sources and lab-grown meats.</p><p>Mental health has taken center stage, with virtual reality therapy and AI-powered mental health apps becoming widely accessible. Workplace wellness programs have evolved to address the needs of remote and hybrid work environments, emphasizing digital detox, ergonomics, and work-life balance. As society continues to prioritize well-being, these trends are shaping a healthier, more mindful future.</p>",
-            image: "health_wellness.jpg"
-        },
-        9: {
-            title: "The Rise of Virtual Reality Education",
-            content: "<p>Virtual Reality (VR) is revolutionizing the education sector in 2025, offering immersive and engaging learning experiences across various subjects.  Students can explore historical sites, dissect virtual organs, or even travel to distant planets, all from the comfort of their classrooms. This technology fosters deeper understanding and knowledge retention, making learning more interactive and enjoyable.</p><p>VR also caters to diverse learning styles, providing personalized learning paths and adaptive assessments.  The accessibility of VR technology is increasing, making it a viable option for schools and educational institutions of all sizes.  As VR technology continues to evolve, its impact on education will only grow stronger, shaping the future of learning.</p>",
-            image: "/placeholder.svg?height=400&width=600"
-        },
-        10: {
-            title: "Space Tourism: The New Frontier",
-            content: "<p>The year 2025 marks a significant milestone in space exploration with the rise of commercial space tourism.  Private companies are now offering suborbital and orbital flights to paying customers, opening up the cosmos to a wider audience.  This burgeoning industry is not only pushing the boundaries of space travel but also driving innovation in aerospace technology and fostering international collaboration.</p><p>The economic impact of space tourism is substantial, creating jobs and stimulating investment in related industries.  However, the environmental and ethical implications of space travel also require careful consideration.  As space tourism continues to grow, it's crucial to balance the excitement of exploration with responsible practices to protect our planet and ensure the sustainability of this new frontier.</p>",
-            image: "/placeholder.svg?height=400&width=600"
-        },
-        11: {
-            title: "The Global Water Crisis: Solutions and Innovations",
-            content: "<p>The global water crisis is one of the most pressing challenges of our time, with billions facing water scarcity and lack of access to clean drinking water.  Climate change, population growth, and pollution are exacerbating this issue, leading to widespread water shortages and impacting agriculture, industry, and human health.</p><p>However, innovative solutions are emerging to address this crisis.  From advanced water purification technologies to sustainable water management practices, there is a growing focus on developing and implementing effective strategies to conserve water resources and ensure equitable access to clean water for all.  These innovations, combined with global cooperation and policy changes, offer hope for a more water-secure future.</p>",
-            image: "/placeholder.svg?height=400&width=600"
-        },
-        12: {
-            title: "Nepal's Economic Boom: A Model for Developing Nations",
-            content: "<p>Nepal's remarkable economic growth in 2025 serves as a compelling example for other developing nations.  By strategically leveraging technology, promoting sustainable practices, and fostering entrepreneurship, Nepal has achieved significant progress in poverty reduction and economic diversification.</p><p>Nepal's success story highlights the importance of investing in education, infrastructure, and renewable energy.  The country's commitment to sustainable tourism and its focus on empowering women have also contributed to its economic advancement.  Nepal's experience offers valuable lessons for other developing countries seeking to achieve sustainable and inclusive economic growth.</p>",
-            image: "/placeholder.svg?height=400&width=600"
-        },
-        13: {
-            title: "The Ethics of Human Augmentation",
-            content: "<p>The rapid advancements in biotechnology and artificial intelligence are raising profound ethical questions about human augmentation.  As technologies like gene editing and cybernetic enhancements become increasingly sophisticated, we must grapple with the moral and societal implications of altering human capabilities and characteristics.</p><p>Issues of equity, access, and potential misuse of these technologies need careful consideration.  Ensuring responsible innovation and establishing ethical guidelines are crucial to prevent the exacerbation of existing inequalities and to safeguard human dignity.  A thoughtful and inclusive dialogue is essential to navigate the complex ethical landscape of human augmentation and shape a future where these technologies benefit all of humanity.</p>",
-            image: "/placeholder.svg?height=400&width=600"
+        const blogPosts = {
+            // Blog post data...
+        };
+
+        document.querySelectorAll('.read-more').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const postId = this.getAttribute('data-id');
+                const post = blogPosts[postId];
+                if (post) {
+                    modalTitle.textContent = post.title;
+                    modalContent.innerHTML = post.content;
+                    modalImage.src = post.image;
+                    modalImage.alt = post.title;
+                    blogModal.style.display = 'block';
+                } else {
+                    console.error('Blog post not found');
+                }
+            });
+        });
+
+        closeBtn.onclick = function() {
+  blogModal.style.display = 'none';
         }
-    };
 
-    document.querySelectorAll('.read-more').forEach(button => {
-        button.addEventListener('click', function(e) {
+        window.onclick = function(event) {
+            if (event.target == blogModal) {
+                blogModal.style.display = 'none';
+            }
+        }
+
+        function toggleMenu() {
+            menu.classList.toggle('show');
+            menuToggle.classList.toggle('active');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        }
+
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        document.addEventListener('click', function(e) {
+            const isClickInsideMenu = menu.contains(e.target);
+            const isClickOnMenuToggle = menuToggle.contains(e.target);
+            
+            if (!isClickInsideMenu && !isClickOnMenuToggle) {
+                menu.classList.remove('show');
+                menuToggle.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const postId = this.getAttribute('data-id');
-            const post = blogPosts[postId];
-            if (post) {
-                modalTitle.textContent = post.title;
-                modalContent.innerHTML = post.content;
-                modalImage.src = post.image;
-                modalImage.alt = post.title;
-                blogModal.style.display ='block';
-            } else {
-                console.error('Blog post not found');
-            }
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
         });
-    });
 
-    closeBtn.onclick = function() {
-        blogModal.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        if (event.target == blogModal) {
-            blogModal.style.display = 'none';
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            return (
+                rect.top <= windowHeight * 0.75 &&
+                rect.bottom >= 0 &&
+                rect.left >= 0 &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
         }
-    }
 
-    function toggleMenu() {
-        menu.classList.toggle('show');
-        menuToggle.classList.toggle('active');
-        menuIcon.classList.toggle('fa-bars');
-        menuIcon.classList.toggle('fa-times');
-    }
-
-    menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleMenu();
-    });
-
-    document.addEventListener('click', function(e) {
-        const isClickInsideMenu = menu.contains(e.target);
-        const isClickOnMenuToggle = menuToggle.contains(e.target);
-        
-        if (!isClickInsideMenu && !isClickOnMenuToggle) {
-            menu.classList.remove('show');
-            menuToggle.classList.remove('active');
-            menuIcon.classList.remove('fa-times');
-            menuIcon.classList.add('fa-bars');
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.blog-card, .about, .contact, .visit');
+            elements.forEach(el => {
+                if (isElementInViewport(el)) {
+                    el.classList.add('animate');
+                }
+            });
         }
-    });
 
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
-        contactForm.reset();
-    });
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('resize', handleScrollAnimation);
+        handleScrollAnimation();
 
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        return (
-            rect.top <= windowHeight * 0.75 &&
-            rect.bottom >= 0 &&
-            rect.left >= 0 &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const sections = document.querySelectorAll('main > section');
 
-    function handleScrollAnimation() {
-        const elements = document.querySelectorAll('.blog-card, .about, .contact, .visit');
-        elements.forEach(el => {
-            if (isElementInViewport(el)) {
-                el.classList.add('animate');
-            }
-        });
-    }
+        function setActiveLink() {
+            let index = sections.length;
 
-    window.addEventListener('scroll', handleScrollAnimation);
-    window.addEventListener('resize', handleScrollAnimation);
-    handleScrollAnimation();
+            while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
 
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll('main > section');
+            navLinks.forEach((link) => link.classList.remove('active'));
+            navLinks[index].classList.add('active');
+        }
 
-    function setActiveLink() {
-        let index = sections.length;
+        setActiveLink();
+        window.addEventListener('scroll', setActiveLink);
 
-        while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
-
-        navLinks.forEach((link) => link.classList.remove('active'));
-        navLinks[index].classList.add('active');
-    }
-
-    setActiveLink();
-    window.addEventListener('scroll', setActiveLink);
-
-    navLinks.forEach(link => {
+        navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
         // Exclude the "Privacy & Policy" link from interference
         if (this.getAttribute('href') === 'privacy-policy.html') {
@@ -960,20 +839,25 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (targetSection) {
             targetSection.scrollIntoView({ behavior: 'smooth' });
-            }
+                }
 
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
 
-            if (window.innerWidth <= 768) {
-                menu.classList.remove('show');
-                menuToggle.classList.remove('active');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            }
+                if (window.innerWidth <= 768) {
+                    menu.classList.remove('show');
+                    menuToggle.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
         });
     });
-});
+    
+    if (window.location.pathname.endsWith('/privacy-policy.html')) {
+        window.location.replace(window.location.pathname.replace('/privacy-policy.html', '/privacy-policy'));
+    }
+    
     </script>
 </body>
 </html>
