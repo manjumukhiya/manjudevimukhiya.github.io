@@ -39,6 +39,19 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
+        y-index: 1000;
+    }
+
+    header::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: #00008B;
+        box-shadow: 0 0 5px #00008B;
     }
 
     .logo-container {
@@ -125,31 +138,24 @@
         height: 40px;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
         position: absolute;
         top: 50%;
         right: 10px;
         transform: translateY(-50%);
     }
 
-    .menu-icon::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, rgba(255,255,0,0.3) 0%, rgba(255,255,0,0) 70%);
-        border-radius: 50%;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .menu-icon:active::before,
-    .menu-icon.active::before {
-        opacity: 1;
+    .menu-icon {
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
     }
 
     .menu-icon i {
-        z-index: 1;
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     nav {
@@ -220,25 +226,41 @@
         nav ul li:last-child {
             margin-bottom: 0;
         }
-    }
-
-    .hero {
-        height: 40vh;
+        
+        .hero {
+        height: 80vh;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         position: relative;
         overflow: hidden;
-        margin-top: 180px;
-        margin-bottom: 20px;
+        margin-top: 0px;
+        margin-bottom: 80px;
+    }
+
+    .hero {
+    position: relative; /* Needed for absolute positioning */
+    z-index: 1; /* Ensures .hero stays above other elements */
+}
+
+     .hero::after {
+         content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: #00008B;
+        box-shadow: 0 0 5px #00008B;
+
     }
 
     .hero-content {
         background: none;
         padding: 30px;
         border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
         margin: 0 20px;
         position: relative;
         overflow: hidden;
@@ -258,6 +280,21 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+        
+
+    .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .hero-content .video-background {
+        z-index: 0;
     }
 
     .hero-content h1,
@@ -297,7 +334,26 @@
     }
 
     .blogs {
-        padding: 30px 0;
+        margin-top: -99px;
+        position: relative;
+        padding: 20px 0 30px; /* Increased top padding */
+    }
+
+    .blogs h2 {
+        position: relative;
+        padding:0.05px 0 1px;
+        margin: 0;
+    }
+
+    .blogs h2::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        height: 1px;
+        background: yellow;
+        box-shadow: 0 0 5px yellow;
     }
 
     .blog-grid {
@@ -345,7 +401,7 @@
     .blog-date {
         font-size: 0.9rem;
         color: #888;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     .about, .contact, .visit {
@@ -417,13 +473,40 @@
     }
 
     .social-links a {
+        position: relative;
         font-size: 2rem;
-        margin: 0 10px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-decoration: none;
+    }
+
+    .social-links a::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        right: 15%;
+        bottom: 15%;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0);
         transition: all 0.3s ease;
     }
 
-    .social-links a:hover {
-        transform: translateY(-3px);
+    .social-links a:active::before {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .social-links a i {
+        position: relative;
+        z-index: 1;
     }
 
     .social-links a.facebook {
@@ -434,7 +517,7 @@
         color: #1DA1F2;
     }
 
-    .social-links a.instagram {
+    .social-links a.instagram i {
         background: -webkit-linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -446,6 +529,11 @@
 
     .social-links a.email {
         color: #D44638;
+    }
+
+    .blogs-header {
+        position: relative;
+        margin-bottom: 20px;
     }
 
     @keyframes fadeIn {
@@ -605,6 +693,10 @@
 
     <main>
         <section id="home" class="hero">
+            <video class="video-background" autoplay loop muted playsinline>
+                <source src="card.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="hero-content fade-in">
                 <div class="video-background">
                     <video autoplay loop muted playsinline>
@@ -619,10 +711,12 @@
 
         <section id="blogs" class="blogs">
             <div class="container">
-                <h2>Latest Posts</h2>
+                <div class="blogs-header">
+                    <h2>Latest Posts</h2>
+                </div>
                 <div class="blog-grid">
                     <div class="blog-card slide-in">
-                        <div class="blog-image" style="background-image: url('IMG_20250105_215229.png');"></div>
+                        <div class="blog-image" style="background-image: url('img.png');"></div>
                         <div class="blog-content">
                             <p class="blog-date">January 15, 2025</p>
                             <h3 class="blog-title">Quantum Computing Breakthrough</h3>
@@ -648,8 +742,6 @@
                             <a href="blog-3.html" class="btn">Read More</a>
                         </div>
                     </div>
-                    
-                    <!-- More blog cards... -->
                 </div>
             </div>
         </section>
@@ -688,7 +780,7 @@
             <div class="container">
                 <h2>Visit us on</h2>
                 <div class="social-links">
-                    <a href="#" class="facebook highlight-effect" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="facebook highlight-effect" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="twitter highlight-effect" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="instagram highlight-effect" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="whatsapp highlight-effect" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -747,9 +839,9 @@
         });
 
         closeBtn.onclick = function() {
-  blogModal.style.display = 'none';
+            blogModal.style.display = 'none';
         }
-
+        
         window.onclick = function(event) {
             if (event.target == blogModal) {
                 blogModal.style.display = 'none';
@@ -827,18 +919,17 @@
         window.addEventListener('scroll', setActiveLink);
 
         navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        // Exclude the "Privacy & Policy" link from interference
-        if (this.getAttribute('href') === 'privacy-policy.html') {
-            return; // Skip preventing default behavior
-        }
-        
-        e.preventDefault(); // Prevent default for other links
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        
-        if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === 'privacy-policy.html') {
+                    return;
+                }
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
                 }
 
                 navLinks.forEach(l => l.classList.remove('active'));
@@ -854,8 +945,8 @@
         });
     });
        
-        if(window.location.pathname=="/index.html"){window.location.replace(window.location.origin);
-     }
+    if(window.location.pathname=="/index.html"){window.location.replace(window.location.origin);
+    }
     
     if (window.location.pathname.endsWith('/privacy-policy.html')) {
         window.location.replace(window.location.pathname.replace('/privacy-policy.html', '/privacy-policy'));
