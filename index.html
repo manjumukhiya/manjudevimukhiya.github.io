@@ -39,8 +39,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: relative;
-        y-index: 1000;
     }
 
     header::after {
@@ -195,57 +193,20 @@
         color: #fff;
     }
 
-    @media (max-width: 768px) {
-        nav {
-            margin-left: 0;
-            width: 100%;
-        }
-
-        nav ul {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(to bottom, #000080, #000000);
-            flex-direction: column;
-            padding: 20px;
-            border-radius: 0;
-            transition: all 0.3s ease;
-        }
-
-        nav ul.show {
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 0;
-            margin-bottom: 10px;
-        }
-
-        nav ul li:last-child {
-            margin-bottom: 0;
-        }
-        
-        .hero {
-        height: 60vh;
+    .hero {
+        height: 70vh;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         position: relative;
         overflow: hidden;
-        margin-top: 0px;
+        margin-top: 120px;
         margin-bottom: 80px;
     }
 
-    .hero {
-    position: relative; /* Needed for absolute positioning */
-    z-index: 1; /* Ensures .hero stays above other elements */
-}
-
-     .hero::after {
-         content: '';
+    .hero::after {
+        content: '';
         position: absolute;
         left: 0;
         right: 0;
@@ -253,66 +214,75 @@
         height: 1px;
         background: #00008B;
         box-shadow: 0 0 5px #00008B;
+    }
 
+    .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    .hero-background video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-video-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+
+    .hero-video-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-content-wrapper {
+        position: relative;
+        z-index: 2;
+        width: 90%;
+        height: 55%;
+        max-width: 600px;
     }
 
     .hero-content {
-        background: none;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        margin: 0 20px;
         position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-
-    .video-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
-
-    .video-background video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+        z-index: 2;
+        background: rgba(0, 0, 0, 0);
+        padding: 30px;
+        border-radius: 20px;
         
-
-    .video-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-    }
-
-    .hero-content .video-background {
-        z-index: 0;
     }
 
     .hero-content h1,
     .hero-content p {
-        position: relative;
-        z-index: 2;
         color: #fff;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0);
     }
 
     h1, h2, h3 {
         font-family: 'Playfair Display', serif;
     }
 
-    h1 {
-        font-size: 3.5rem;
+    .hero-content h1 {
+        font-size: 3rem;
         margin-bottom: 20px;
-        color: #fff;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
     }
 
     .btn {
@@ -336,7 +306,7 @@
     .blogs {
         margin-top: -99px;
         position: relative;
-        padding: 20px 0 30px; /* Increased top padding */
+        padding: 20px 0 30px;
     }
 
     .blogs h2 {
@@ -359,7 +329,7 @@
     .blog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 30px;
+        gap: 25px;
     }
 
     .blog-card {
@@ -536,24 +506,6 @@
         margin-bottom: 20px;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-        from { transform: translateY(20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-
-    .fade-in {
-        animation: fadeIn 0.5s ease-out;
-    }
-
-    .slide-in {
-        animation: slideIn 0.5s ease-out;
-    }
-
     @media (max-width: 768px) {
         header {
             flex-direction: column;
@@ -598,6 +550,14 @@
 
         .hero-content {
             padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
         }
 
         .blog-grid {
@@ -663,6 +623,23 @@
             transform: rotate(360deg);
         }
     }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    .slide-in {
+        animation: slideIn 0.5s ease-out;
+    }
     </style>
 </head>
 <body>
@@ -693,19 +670,23 @@
 
     <main>
         <section id="home" class="hero">
-            <video class="video-background" autoplay loop muted playsinline>
-                <source src="headbg.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="hero-content fade-in">
-                <div class="video-background">
+            <div class="hero-background">
+                <video autoplay loop muted playsinline>
+                    <source src="headbg.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="hero-content-wrapper">
+                <div class="hero-video-card">
                     <video autoplay loop muted playsinline>
                         <source src="card.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <h1>Welcome to our platform</h1>
-                <p>Discover amazing stories, articles, news and insights.</p>
+                <div class="hero-content fade-in">
+                    <h1>Welcome to our platform</h1>
+                    <p>Discover amazing stories, articles, news and insights.</p>
+                </div>
             </div>
         </section>
 
@@ -841,7 +822,7 @@
         closeBtn.onclick = function() {
             blogModal.style.display = 'none';
         }
-        
+
         window.onclick = function(event) {
             if (event.target == blogModal) {
                 blogModal.style.display = 'none';
@@ -955,3 +936,4 @@
     </script>
 </body>
 </html>
+
