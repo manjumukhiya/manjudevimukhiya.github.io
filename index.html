@@ -922,31 +922,21 @@
                     menuIcon.classList.add('fa-bars');
                 }
             });
-        }
-                         document.addEventListener("DOMContentLoaded", function () {
-    let path = window.location.pathname;
-
-    // Redirect index.html to the root domain
-    if (path === "/index.html") {
-        window.location.replace(window.location.origin);
-    } 
-
-    // Blog redirects (Map blog pages to custom slugs)
-    const blogRedirects = {
-        "/blog1.html": "/Quantum-Computing-Breakthrough",
-        "/blog2.html": "/AI-Revolution",
-        "/blog3.html": "/Future-of-Tech"
-    };
-
-    if (blogRedirects[path]) {
-        window.location.replace(window.location.origin + blogRedirects[path]);
+        });
+    });
+       
+    if(window.location.pathname=="/index.html"){window.location.replace(window.location.origin);
     }
-
-    // Redirect privacy-policy.html to /privacy-policy
-    else if (path.endsWith("/privacy-policy.html")) {
-        window.location.replace(window.location.origin + "/privacy-policy");
+    
+    if (window.location.pathname.endsWith('/privacy-policy.html')) {
+        window.location.replace(window.location.pathname.replace('/privacy-policy.html', '/privacy-policy'));
     }
-});
+        if (window.location.pathname.endsWith('/blog1.html')) {
+        window.location.replace(window.location.pathname.replace('/blog1.html', '/Quantum-Computing-Breakthrough'));
+                }
+            });
+        });
+     });
     </script>
 </body>
 </html>
