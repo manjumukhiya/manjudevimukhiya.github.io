@@ -925,19 +925,19 @@
                     menu.classList.remove('show');
                     menuToggle.classList.remove('open');
                 }
-            });
+
+                if(window.location.pathname=="/index.html"){window.location.replace(window.location.origin);
+                }
+    
+                if (window.location.pathname.endsWith('/privacy-policy.html')) {
+                window.location.replace(window.location.pathname.replace('/privacy-policy.html', '/privacy-policy'));
+                }
+                if (window.location.pathname.endsWith('/blog1.html')) {
+                window.location.replace(window.location.pathname.replace('/blog1.html', '/Quantum-Computing-Breakthrough'));
+                }
+             });
         });
     });
-
-    if(window.location.pathname=="/index.html"){window.location.replace(window.location.origin);
-    }
-    
-    if (window.location.pathname.endsWith('/privacy-policy.html')) {
-        window.location.replace(window.location.pathname.replace('/privacy-policy.html', '/privacy-policy'));
-    }
-        if (window.location.pathname.endsWith('/blog1.html')) {
-        window.location.replace(window.location.pathname.replace('/blog1.html', '/Quantum-Computing-Breakthrough'));
-        }
     </script>
 </body>
 </html>
