@@ -129,11 +129,9 @@
 
     .menu-icon {
         display: none;
-        font-size: 1.5rem;
-        cursor: pointer;
         z-index: 1001;
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         justify-content: center;
         align-items: center;
         position: absolute;
@@ -142,18 +140,28 @@
         transform: translateY(-50%);
     }
 
-    .menu-icon {
-        -webkit-tap-highlight-color: transparent;
-        user-select: none;
+    .menu-icon span {
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background: #fff;
+        border-radius: 1px;
+        transition: all 0.3s ease;
+        transform-origin: center;
     }
 
-    .menu-icon i {
-        font-size: 24px;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .menu-icon span:nth-child(1) { top: 10%; }
+    .menu-icon span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .menu-icon span:nth-child(3) { bottom: 10%; }
+
+    .menu-icon.open span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+    }
+    .menu-icon.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-icon.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
     }
 
     nav {
@@ -194,7 +202,7 @@
     }
 
     .hero {
-        height: 70vh;
+        height: 60vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -202,7 +210,7 @@
         position: relative;
         overflow: hidden;
         margin-top: 120px;
-        margin-bottom: 80px;
+        margin-bottom: 50px;
     }
 
     .hero::after {
@@ -233,13 +241,13 @@
 
     .hero-video-card {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 0%;
+        left: 0%;
         width: 100%;
         height: 100%;
         z-index: 1;
         overflow: hidden;
-        border-radius: 20px;
+        border-radius: 10px;
     }
 
     .hero-video-card video {
@@ -251,12 +259,14 @@
     .hero-content-wrapper {
         position: relative;
         z-index: 2;
-        width: 90%;
+        height: 60%;
+        width: 85%;
         max-width: 600px;
     }
 
     .hero-content {
         position: relative;
+        top: -5%;
         z-index: 2;
         background: rgba(0, 0, 0, 0);
         padding: 30px;
@@ -662,8 +672,10 @@
                 <li><a href="privacy-policy.html">Privacy & Policy</a></li>
             </ul>
         </nav>
-        <div class="menu-icon" id="menuToggle">
-            <i class="fas fa-bars"></i>
+        <div class="menu-icon" id="menuToggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </header>
 
@@ -795,7 +807,6 @@
         const closeBtn = blogModal.querySelector('.close');
         const menuToggle = document.getElementById('menuToggle');
         const menu = document.getElementById('menu');
-        const menuIcon = menuToggle.querySelector('i');
 
         const blogPosts = {
             // Blog post data...
@@ -830,9 +841,7 @@
 
         function toggleMenu() {
             menu.classList.toggle('show');
-            menuToggle.classList.toggle('active');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
+            menuToggle.classList.toggle('open');
         }
 
         menuToggle.addEventListener('click', function(e) {
@@ -846,9 +855,7 @@
             
             if (!isClickInsideMenu && !isClickOnMenuToggle) {
                 menu.classList.remove('show');
-                menuToggle.classList.remove('active');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
+                menuToggle.classList.remove('open');
             }
         });
 
@@ -917,14 +924,12 @@
 
                 if (window.innerWidth <= 768) {
                     menu.classList.remove('show');
-                    menuToggle.classList.remove('active');
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
+                    menuToggle.classList.remove('open');
                 }
             });
         });
     });
-       
+
     if(window.location.pathname=="/index.html"){window.location.replace(window.location.origin);
     }
     
@@ -933,11 +938,7 @@
     }
         if (window.location.pathname.endsWith('/blog1.html')) {
         window.location.replace(window.location.pathname.replace('/blog1.html', '/Quantum-Computing-Breakthrough'));
-                }
-            });
-        });
-     });
+        }
     </script>
 </body>
 </html>
-
