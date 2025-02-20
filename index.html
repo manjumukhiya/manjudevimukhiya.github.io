@@ -7,6 +7,113 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+    /* Cookie Consent Styles */
+    #cookieConsent {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2000;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #6ab1e7, #4a90e2);
+        color: #fff;
+        box-shadow: 0 -1px 2px rgba(0,0,139,0.1);
+        display: none;
+    }
+
+    #cookieConsent::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 1px;
+        background: #00008B;
+        box-shadow: 0 0 5px rgba(0,0,139,0.5);
+    }
+
+    .cookie-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .cookie-text h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .cookie-preferences {
+        margin: 1rem 0;
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .cookie-preferences label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+    }
+
+    .cookie-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-shrink: 0;
+    }
+
+    .cookie-buttons button {
+        font-family: 'Poppins', sans-serif;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    #acceptAll {
+        background: #fff;
+        color: #4a90e2;
+    }
+
+    #acceptSelected {
+        background: rgba(255,255,255,0.2);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    #rejectNonEssential {
+        background: transparent;
+        color: #fff;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        #cookieConsent {
+            padding: 1rem;
+        }
+        
+        .cookie-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .cookie-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .cookie-buttons button {
+            width: 100%;
+        }
+    }
+
+    /* Existing styles */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&family=Roboto:wght@700&display=swap');
 
     * {
@@ -39,6 +146,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        transition: all 0.5s ease;
     }
 
     header::after {
@@ -166,14 +274,24 @@
 
     nav {
         margin-left: 20px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to bottom, #000080, #000000);
+        transform: translateY(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    nav.scrolled {
+        transform: translateY(0);
     }
 
     nav ul {
         display: flex;
         list-style-type: none;
-        background: linear-gradient(to bottom, #000080, #000000);
         padding: 10px;
-        border-radius: 10px;
+        justify-content: center;
     }
 
     nav ul li {
@@ -227,8 +345,6 @@
 
     .hero-background {
         position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
         z-index: 0;
@@ -261,6 +377,7 @@
 
     .hero-content-wrapper {
         position: relative;
+        top: 2%;
         z-index: 2;
         width: 85%;
         max-width: 600px;
@@ -297,7 +414,6 @@
     h1, h2, h3 {
         font-family: 'Playfair Display', serif;
     }
-
 
     .btn {
         display: inline-block;
@@ -657,6 +773,32 @@
     </style>
 </head>
 <body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>🍪 We Value Your Privacy</h3>
+                <p>We use cookies to enhance your experience. By continuing, you agree to our use of cookies. Learn more in our <a href="privacy-policy.html" style="color: #fff; text-decoration: underline;">Privacy Policy</a>.</p>
+                <div class="cookie-preferences">
+                    <label>
+                        <input type="checkbox" id="necessaryCookies" checked disabled> Necessary
+                    </label>
+                    <label>
+                        <input type="checkbox" id="analyticsCookies"> Analytics
+                    </label>
+                    <label>
+                        <input type="checkbox" id="marketingCookies"> Marketing
+                    </label>
+                </div>
+            </div>
+            <div class="cookie-buttons">
+                <button id="acceptAll" class="btn">Accept All</button>
+                <button id="acceptSelected">Accept Selected</button>
+                <button id="rejectNonEssential">Reject Non-Essential</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="logo-container">
             <div class="logo-wrapper">
@@ -668,7 +810,7 @@
             <span class="slogan">Your Daily Dose Of Knowledge</span>
         </div>
         
-        <nav>
+        <nav id="mainNav">
             <ul id="menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#blogs">Blogs</a></li>
@@ -812,6 +954,7 @@
         const closeBtn = blogModal.querySelector('.close');
         const menuToggle = document.getElementById('menuToggle');
         const menu = document.getElementById('menu');
+        const mainNav = document.getElementById('mainNav');
 
         const blogPosts = {
             // Blog post data...
@@ -931,20 +1074,84 @@
                     menu.classList.remove('show');
                     menuToggle.classList.remove('open');
                 }
-
-                if(window.location.pathname=="/index.html"){window.location.replace(window.location.origin);
-                }
-    
-                if (window.location.pathname.endsWith('/privacy-policy.html')) {
-                window.location.replace(window.location.pathname.replace('/privacy-policy.html', '/privacy-policy'));
-                }
-                if (window.location.pathname.endsWith('/Quantum-Computing-Breakthrough.html')) {
-                window.location.replace(window.location.pathname.replace('/Quantum-Computing-Breakthrough.html', '/Quantum-Computing-Breakthrough'));
-                }
-             });
+            });
         });
+
+        // Cookie Consent Logic
+        (function() {
+            const banner = document.getElementById('cookieConsent');
+            const acceptAll = document.getElementById('acceptAll');
+            const acceptSelected = document.getElementById('acceptSelected');
+            const rejectNonEssential = document.getElementById('rejectNonEssential');
+
+            if (!getCookie('cookieConsent')) {
+                banner.style.display = 'block';
+            }
+
+            acceptAll.addEventListener('click', () => {
+                setConsent(true, true, true);
+                banner.style.display = 'none';
+            });
+
+            acceptSelected.addEventListener('click', () => {
+                const analytics = document.getElementById('analyticsCookies').checked;
+                const marketing = document.getElementById('marketingCookies').checked;
+                setConsent(true, analytics, marketing);
+                banner.style.display = 'none';
+            });
+
+            rejectNonEssential.addEventListener('click', () => {
+                setConsent(true, false, false);
+                banner.style.display = 'none';
+            });
+
+            function setConsent(necessary, analytics, marketing) {
+                setCookie('cookieConsent', 'true', 365);
+                setCookie('analyticsConsent', analytics.toString(), 365);
+                setCookie('marketingConsent', marketing.toString(), 365);
+                
+                // Initialize analytics/marketing tools based on consent
+                if(analytics) initAnalytics();
+                if(marketing) initMarketing();
+            }
+
+            function initAnalytics() {
+                // Add your analytics code here
+                console.log('Analytics initialized');
+            }
+
+            function initMarketing() {
+                // Add your marketing code here
+                console.log('Marketing initialized');
+            }
+
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/;SameSite=Lax`;
+            }
+
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+        })();
+
+        // Scroll effect for nav
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                mainNav.classList.remove('scrolled');
+            } else {
+                // Scrolling up
+                mainNav.classList.add('scrolled');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
     });
     </script>
 </body>
 </html>
-
