@@ -132,6 +132,22 @@
     </article>
     <a href="#home" class="btn">Back To Home</a>
     <script> 
+        function playVideo(video) {
+            // Get all video elements
+            const videos = document.querySelectorAll('video');
+            // Pause all videos
+            videos.forEach(v => {
+                if (v !== video) {
+                    v.pause();
+                }
+            });
+            // Play the clicked video
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            
         if (window.location.pathname === '/Prakriti-Lamsal-KIIT-Case.html') {
             window.location.replace('/Prakriti-Lamsal-KIIT-Case');
         }
