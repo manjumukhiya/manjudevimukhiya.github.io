@@ -155,7 +155,13 @@ document.querySelectorAll('video').forEach(video => {
         pauseOtherVideos(this);
     });
 });
-            
+    // Disable long press on video (for touch devices)
+    document.querySelectorAll('video').forEach(video => {
+        video.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Disables long press
+        });
+    });
+        
         if (window.location.pathname === '/Prakriti-Lamsal-KIIT-Case.html') {
             window.location.replace('/Prakriti-Lamsal-KIIT-Case');
         }
