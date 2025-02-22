@@ -130,28 +130,35 @@
             <p>Prakriti’s legacy should not be one of despair but one of change—a catalyst for improving student support systems and ensuring that no student ever feels isolated or neglected in their journey to higher education. Justice for Prakriti Lamsal is not just about seeking accountability for her death but about ensuring that future students never have to face the same fate.</p>
         </div>
     </article>
-    <a href="https://manjudevimukhiya.com.np" class="btn">Back To Home</a>
+    <a href="index.html" class="btn">Back To Home</a>
     <script> 
-       const videos = document.querySelectorAll('video');
-        
-        // Function to pause all videos except the one clicked
-        function handleVideoPlay(event) {
-            videos.forEach(video => {
-                // Pause all videos except the one clicked
-                if (video !== event.target) {
-                    video.pause();
-                }
-            });
-        }
+       let currentPlayingVideo = null;
 
-        // Add event listeners to all video elements
-        videos.forEach(video => {
-            video.addEventListener('play', handleVideoPlay);
-        });
+// Function to pause the current video
+function pauseOtherVideos(videoToPlay) {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+        if (video !== videoToPlay) {
+            video.pause();
+        }
+    });
+}
+
+// Add event listeners to each video
+document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('play', function() {
+        // Pause the previously playing video if one exists
+        if (currentPlayingVideo && currentPlayingVideo !== this) {
+            currentPlayingVideo.pause();
+        }
+        currentPlayingVideo = this;
+        pauseOtherVideos(this);
+    });
+});
             
         if (window.location.pathname === '/Prakriti-Lamsal-KIIT-Case.html') {
             window.location.replace('/Prakriti-Lamsal-KIIT-Case');
-        });
+        }
     </script>
 </body>
 </html>
