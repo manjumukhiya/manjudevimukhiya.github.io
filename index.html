@@ -917,24 +917,27 @@
     </footer>
 
     <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#8b00ff', '#ff0000'];
-    var currentColor = 0;
-    var favicon = document.getElementById('favicon');
+  document.addEventListener("DOMContentLoaded", function() {
+    var svgCode = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" stroke="#ff0000" stroke-width="5" fill="none" transform="rotate(0, 50, 50)" />
+      </svg>
+    `;
 
-    setInterval(function() {
-        // Creating an SVG with a rotating conic gradient
-        var svg = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" stroke="${colors[currentColor]}" stroke-width="5" fill="none" transform="rotate(${currentColor * 10}, 50, 50)" />
-          </svg>
-        `;
+    // Convert the SVG code to a Base64 string
+    var base64SVG = btoa(svgCode);
 
-        // Updating the favicon with the new SVG data URL
-        favicon.href = 'data:image/svg+xml;base64,' + btoa(svg);
+    // Create the favicon link element dynamically
+    var faviconLink = document.createElement("link");
+    faviconLink.rel = "icon";
+    faviconLink.type = "image/x-icon";
+    faviconLink.href = "data:image/svg+xml;base64," + base64SVG;
 
-        currentColor = (currentColor + 1) % colors.length;
-    }, 500); // Change color and rotate every 500ms
+    // Append the favicon to the head of the document
+    document.head.appendChild(faviconLink);
+
+    // Log the Base64 string to the console for debugging
+    console.log("Generated Base64 SVG Favicon: ", faviconLink.href);
   });
         const blogModal = document.createElement('div');
         blogModal.id = 'blogModal';
